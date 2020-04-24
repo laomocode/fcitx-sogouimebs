@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--
+ mode:
+	0: 
+	1: 
+-->
+<inputmode mode="1">
+<!--
+		//扩展键盘模式， 不需要经过shell，仅在SDK内部做键盘状态区分用。
+		ec_modePassword = -5,	//密码键盘
+		ec_modeMoreCand = -4,	//更多候选键盘
+		ec_modeSymbol = -3,		//符号键盘
+		ec_modeNumber = -2,		//数字键盘
+		ec_modeInvalid = -1,	//原有shell定义， 保留。
+
+		//正常过shell键盘模式
+		ec_modePy9 = 0,
+		ec_modePy26 = 1,
+		ec_modeZhuyin = 2,
+		ec_modeKorean = 3,
+		ec_modeBihua = 4,
+		ec_modeHWSingle = 5,
+		ec_modeHWOverlap = 6,
+		ec_modeHWLine = 7,
+		ec_modeWubi = 8,
+		ec_modeHWJapan = 9,
+		ec_modeHWKorea = 10,
+		ec_modeKoreanChunjiin = 11,
+		ec_modeCangJie = 12,
+		ec_modeJapanKana = 13,	// (12 keys)
+		ec_modeJapanRoma = 14,
+		ec_modeJapanKana50 = 15,
+		ec_modeHWEnglish = 16,
+		ec_modeEn26 = 17,
+		ec_modeHWFree = 18,
+		ec_modePcPy = 19,
+		ec_modePcWb = 20,
+-->
+	<layout name="Keyboard_py9" value="0" />
+	<layout name="Keyboard_py26" value="1" />
+	<layout name="Keyboard_en26" value="17" />
+	<layout name="Keyboard_en26_UP" value="17" />
+	<layout name="Keyboard_en26_temp_UP" value="17" />
+	<layout name="Keyboard_number" value="-2" />
+	<layout name="Keyboard_symbol" value="-3" />
+	<layout name="keyboard_moreCand" value="-4" />
+	<layout name="Keyboard_emoji" value="-6" />
+	<layout name="Keyboard_editor" value="-7" />
+	<layout name="Keyboard_switch" value="-8" />
+	<layout name="Keyboard_setting" value="-9" />
+	<layout name="Keyboard_voice" value="-10" />
+	<layout name="Keyboard_en26_Symbol" value="-11" />
+	<layout name="Keyboard_number_en" value="-12"  />
+	<layout name="Keyboard_pcpy" value="19" />
+	<layout name="Keyboard_handInput" value="18" />
+	<layout name="Keyboard_handInput_fullscreen" value="-99" />
+	<layout name="Keyboard_bihua" value="4" />
+	<layout name="Keyboard_wubi" value="8" />
+</inputmode>

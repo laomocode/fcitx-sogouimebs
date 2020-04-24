@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="188,55" bkimage="bar.png" name="statusWnd">
+	<Font name="黑体" size="16"/> <!-- 0 -->
+	<Control name="logo" bkimage="logo1.png" size="29,29" pos="0,0" visible="false"/>
+	<Button name="capsLock" normalimage="a1.png" size="22,26" pos="17,9"/>
+	<Button name="english" normalimage="en1.png" size="22,26" pos="17,9"/>
+	<Button name="chinese" normalimage="cn1.png" size="22,26" pos="17,9" />
+	<Button name="half" normalimage="ban1.png" size="29,29" pos="38,7" />
+	<Button name="full" normalimage="quan1.png" size="29,29" pos="38,7"/>
+	<Button name="punctuation" normalimage="cn_biaodian1.png" size="20,25" pos="68,10" />
+	<Button name="punctuationEnglish" normalimage="en_biaodian1.png" size="20,25" pos="68,10"/>
+	<Button name="fan" normalimage="fan1.png" size="22,26" pos="93,9" />
+	<Button name="jian" normalimage="jian1.png" size="22,26" pos="93,9"/>
+	<Button name="pinyin" normalimage="pin.png" size="22,26" pos="119,8" visible="true"/>
+	<Button name="wubi" normalimage="cn2.png" size="22,26" pos="119,8"/>
+	<Button name="setting" normalimage="setting.png" size="22,26" pos="144,8" />
+	<Button name="voiceInput" visible="false"/>
+	<Button name="handInput" visible="false"/>
+</Window>

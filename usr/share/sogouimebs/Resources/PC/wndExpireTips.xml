@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+ <Window name="WndExpireTips" size="176,58" bkimage="wndExpireTips/bg.png,9,9,9,9"> 
+	<Font name="微软雅黑" size="12"/> <!-- 0 -->
+	
+	<Button name="close" normalimage="file='wndExpireTips/close.png' source='0,0,20,20'" hotimage="file='wndExpireTips/close.png' source='20,0,40,20'"
+	pushedimage="file='wndExpireTips/close.png' source='40,0,60,20'" size="20,20" pos="151,5" />
+	<Text name="tips" text="" size="130,15" pos="21,15" textcolor="0xff222222" font="0"/>
+	<Text name="tips1" text="请联系IT部门" size="130,15" pos="21,30" textcolor="0xff222222" font="0"/>
+</Window>
+
+

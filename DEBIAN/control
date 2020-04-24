@@ -1,0 +1,23 @@
+Package: sogouimebs
+Priority: optional
+Section: utils
+Installed-Size: 119932
+Maintainer: Ubuntu Kylin Team <ubuntukylin-members@lists.launchpad.net>
+Architecture: amd64
+Version: 2.0.0.38
+Depends: fcitx (>= 1:4.2.8), fcitx-frontend-gtk2, fcitx-frontend-gtk3, fcitx-frontend-qt5, fcitx-module-kimpanel, fcitx-module-x11, libxtst6, im-config, lsb-release, fcitx-libs | libfcitx-config4, fcitx-libs | libfcitx-qt0, fcitx-libs | libfcitx-utils0, fcitx-ui-classic, qml-module-qtquick2, libqt5quickwidgets5, libfcitx-qt5-1
+Recommends: fonts-droid | fonts-droid-fallback
+Breaks: fcitx-ui-qimpanel, sogoupinyin
+Conffiles:
+ /etc/X11/Xsession.d/72sogouimebs 8ff0f7a03b58d1fd60e142d415336133
+ /etc/xdg/autostart/sogouimebs-watchdog.desktop df96d2f2c56cd449a4dcfa4f100e2801
+ /etc/xdg/autostart/sogouimebs.desktop dbdbe33902465a3fb954e31ca083a2d1
+Description: Business Sogou Input Method
+ Based on web search engine technology, Sogou Pinyin input method is
+ the next-generation input method designed for Internet users. As it
+ is backed with search engine technology, user input method can be
+ extremely fast, and it is much more advanced than other input method
+ engines in terms of the volume of the vocabulary database and its
+ accuracy. Sogou input method is the most popular input methods in
+ China, and Sogou promises it will always be free of charge.
+Homepage: http://pinyin.sogou.com/linux

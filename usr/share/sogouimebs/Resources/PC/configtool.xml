@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Configtool >
+	<General> 1</General>
+	<Appearance> 1</Appearance>
+	<Thesaurus> 1</Thesaurus>
+	<Advance> 1</Advance>
+	<Pinyin> 1</Pinyin>
+	<Wubi> 1</Wubi>
+        <About> 1</About>
+</Configtool>

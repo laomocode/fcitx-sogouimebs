@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Sogou Pinyin
+Name[zh_CN]=sogouimebs-watchdog.desktop
+GenericName=Sogou Input Method
+GenericName[zh_CN]=搜狗输入法守护进程
+Comment=Sogou Input Method
+Comment[zh_CN]=搜狗输入法守护进程
+Keywords=ime;imf;input;
+Exec=/usr/bin/sogouImeService-watchdog
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=System;Utility;
+StartupNotify=false
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-Autostart-Notify=false
+X-GNOME-Autostart-Delay=3
+X-KDE-autostart-phase=1
+X-KDE-autostart-after=panel
+X-MATE-Autostart-Phase=Applications
+X-MATE-Autostart-Delay=3
+X-MATE-Autostart-Notify=false

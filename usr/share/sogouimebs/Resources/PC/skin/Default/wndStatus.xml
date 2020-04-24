@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="171,29" bkimage="bar.png,20,2,2,2" name="statusWnd">
+	<Font name="微软雅黑" size="24"/> <!-- 0 -->
+	<Control name="logo" bkimage="logo1.png" size="29,29" pos="0,0" visible="true" />
+	<Button name="capsLock" normalimage="a1.png" hotimage="a1_hover.png" pushedimage="a1_press.png" size="22,22" pos="29,4" />
+	<Button name="english" normalimage="en1.png" hotimage="en1_hover.png" pushedimage="en1_press.png" size="22,22" pos="29,4" />
+	<Button name="chinese" normalimage="cn1.png" hotimage="cn1_hover.png" pushedimage="cn1_press.png" size="22,22" pos="29,4" />
+	<Button name="half" normalimage="ban1.png" hotimage="ban1_hover.png" pushedimage="ban1_press.png" size="22,22" pos="51,4" />
+	<Button name="full" normalimage="quan1.png" hotimage="quan1_hover.png" pushedimage="quan1_press.png" size="22,22" pos="51,4" />
+	<Button name="punctuation" normalimage="cn_biaodian1.png" hotimage="cn_biaodian1_hover.png" pushedimage="cn_biaodian1_press.png" size="22,22" pos="73,4" />
+	<Button name="punctuationEnglish" normalimage="en_biaodian1.png" hotimage="en_biaodian1_hover.png" pushedimage="en_biaodian1_press.png" size="22,22" pos="73,4" />
+	<Button name="fan" normalimage="fan1.png" hotimage="fan_hover.png" pushedimage="fan_press.png" size="22,22" pos="95,4" />
+	<Button name="jian" normalimage="jian1.png" hotimage="jian1_hover.png" pushedimage="jian1_press.png" size="22,22" pos="95,4" />
+	<Button name="pinyin" normalimage="pin.png" hotimage="pin_hover.png" pushedimage="pin_press.png" size="22,22" pos="117,4"/>
+	<Button name="wubi" normalimage="cn2.png" hotimage="cn2_hover.png" pushedimage="cn2_press.png" size="22,22" pos="117,4"/>
+	<Button name="setting" normalimage="setting.png" hotimage="setting_hover.png" pushedimage="setting_press.png" size="22,22" pos="139,4"/>
+	
+</Window>

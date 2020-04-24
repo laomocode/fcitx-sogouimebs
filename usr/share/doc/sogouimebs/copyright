@@ -1,0 +1,108 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sogouimebs
+Upstream-Contact: Sogou IME Support <ime@sogou-inc.com>
+Disclaimer:
+ This package is not part of Debian operating system.
+ .
+ The binary package (without modification) is freely redistributable
+ for non-commercial purpose, effectively making them distributable
+ through Debian's infrastructure (including the mirror network), or
+ its downstream distributions that have similar set up of Debian's
+ non-free area.
+
+Files: *
+Copyright: 2018, Sogou.com Inc & Ubuntu Kylin by CCN Joint Lab
+License: sogouimebs-proprietary
+Comment:
+ Any of the proprietary files are not linked to/by any GPL code.
+ .
+ Distributing media or archives with contents of both license is permitted by
+ the proprietary license and GPL-2+.
+
+Files: /usr/bin/sogouImeService
+Copyright: 2018, Sogou.com Inc & Ubuntu Kylin by CCN Joint Lab
+License: sogouimebs-proprietary
+Comment:
+ These files are proprietary but some parts of the code are made available as
+ through a GPL-2+ licensed dedicated project:
+ https://github.com/sogouimebs/fcitx-qimpanel
+
+Files: /usr/lib/*/fcitx/fcitx-sogou*.so
+Copyright: 2018, Sogou.com Inc & Ubuntu Kylin by CCN Joint Lab
+License: sogouimebs-proprietary
+Comment:
+ These are loadable plugins of Fcitx, which is governed by an upstream license
+ exception: <https://github.com/fcitx/fcitx/blob/master/COPYING.LIBS>
+ .
+ "All source code in Fcitx is released under GNU General Public License version
+ 2 or higher, but for run-time loadable add-ons that run within Fcitx's plugin
+ framework (which means the add-on is directly loaded by libfcitx), Fcitx's
+ copyright holders grant you additional permission to use the header of libfcitx,
+ libfcitx-config, libfcitx-utils, and access to the data structure of libfcitx,
+ libfcitx-config, and libfcitx-utils."
+
+Files: /usr/lib/*/fcitx/fcitx-autoeng-ng.so
+ /usr/lib/*/fcitx/fcitx-fullwidth-char-enhance.so
+ /usr/lib/*/fcitx/fcitx-punc-ng.so
+ /usr/include/fcitx/module/punc-ng/*.h
+ /usr/include/fcitx/module/autoeng-ng/*.h
+ /usr/share/fcitx/data/punc-ng.mb.zh_*
+ /usr/share/fcitx/data/AutoEngNg.dat
+ /usr/share/fcitx/configdesc/fcitx-autoeng-ng.desc
+ /usr/share/fcitx/addon/fcitx-punc-ng.conf
+ /usr/share/fcitx/addon/fcitx-fullwidth-char-enhance.conf
+ /usr/share/fcitx/addon/fcitx-autoeng-ng.conf
+Copyright: Weng Xuetian <wengxt@gmail.com>
+           2014, Sogou.com Inc & Ubuntu Kylin by CCN Joint Lab
+License: GPL-2+
+Comment:
+ These files are derived from Fcitx project, full source code is released
+ at: https://github.com/sogouimebs/
+
+Files: debian/*
+Copyright: 2018, xiaoyiwu <xiaoyiwu@ubuntukylin.com>
+License: MIT
+
+License: sogouimebs-proprietary
+ All rights reserved.
+ .
+ For details, see (in Chinese):
+   /usr/share/doc/sogouimebs/license_ch.txt
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the
+ Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+ MA 02110-1301, USA.
+ .
+ On Debian systems, the full text of GPL-2 could be found at
+ /usr/share/common-licenses/GPL-2.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.

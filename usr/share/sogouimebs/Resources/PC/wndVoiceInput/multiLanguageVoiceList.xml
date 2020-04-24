@@ -1,0 +1,18 @@
+<Window size="173,145" bkcolor="0x00" name="multiLanguageVoiceList">
+<Font name="微软雅黑" size="12"/>
+ <!--  1  -->
+<Font name="微软雅黑" size="14"/>
+ <!--  2  -->
+ <Font name="微软雅黑" size="18"/>
+ <!--  3  -->
+
+<List name="multiLanguageList" pos="0,0" size="173,145" font="0" itemCnt="5" enableselected="false" text_rect_offset="36,0,0,0" align="left" 
+bkimage="languageList.png,1,8,29,5" direct="vertical" cell_size="173,30" cellpadding="0,5,8,5" space="1" item_textcolor="0xff222222" selecttextcolor="0xff222222"
+item_minwidth="173" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="0" 
+ item_fgpos="12,10" item_fgsize="12,12" item_fg_checkedimage="file='itemCheckedImage.png'" 
+ scroll_image="scroll.png,1,1,4,4" scroll_size="10,20" scroll_deta="5" scrollMargin="2" 
+ item_normalimage="file='listItemFourStatus.png' source='0,0,5,5' corner='2,2,2,2'" 
+ item_hotimage="file='listItemFourStatus.png' source='5,0,10,5' corner='2,2,2,2'"
+ item_checkedhotimage="file='listItemFourStatus.png' source='5,0,10,5' corner='2,2,2,2'" 
+ item_pushedimage="file='listItemFourStatus.png' source='10,0,15,5' corner='2,2,2,2'"/>
+</Window>

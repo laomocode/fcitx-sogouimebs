@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window name="keyboard_base" size="1080,388" bkimage="base\bg.png">
+	<Font name="微软雅黑" size="40"/> <!-- 0    24-->
+	<Font name="微软雅黑" size="37"/> <!-- 1    22-->
+	<Font name="微软雅黑" size="34"/> <!-- 2    20-->
+	<Font name="微软雅黑" size="32"/> <!-- 3 	19-->
+	<Font name="微软雅黑" size="30"/> <!-- 4 	18-->
+	<Font name="微软雅黑" size="28"/> <!-- 5 	17-->
+	<Font name="微软雅黑" size="27"/> <!-- 6  	16-->
+	<Font name="微软雅黑" size="24"/> <!-- 7  	14 -->
+	<Font name="微软雅黑" size="20"/> <!-- 8  	12 -->
+	<Font name="微软雅黑" size="19"/> <!-- 9  	11 -->
+
+	<GlobalSetting productname="base" commit_keyboard_switch="true" support_fullscreen_hw="false" support_cloudinput="false" support_voiceinput="true"/>
+
+	<Default name="Key" value="normalimage=&quot;base\key_qwerty.png,16,16,16,22&quot; pushedimage=&quot;base\key_qwerty_p.png,16,16,16,22'&quot; size=&quot;101,73&quot; font=&quot;1&quot; text_rect=&quot;0,0,0,0&quot; textcolor=&quot;0xFF525252&quot; text2_font=&quot;3&quot; text2_rect=&quot;22,0,13,14&quot; text2_color=&quot;0xff748999&quot;"/>
+	<Style name="s_toolsBar_key" value="bkimage=&quot;base\trans.png&quot; size=&quot;197,76&quot; fgsize=&quot;42,40&quot; text_color=&quot;0xFF525252&quot; normalimage=&quot;base\trans.png&quot; pushedimage=&quot;base\buttonbg_float_function_pressed.png,1,1,1,1'&quot;" />
+	<Style name="s_function_key" value="normalimage=&quot;base\key_func_qwerty.png,16,16,16,22&quot; pushedimage=&quot;base\key_func_qwerty_p.png,16,16,16,22&quot; size=&quot;108,81&quot; font=&quot;3&quot;" />
+	<Style name="s_py9_key" value="bkimage=&quot;base\key.png,16,16,16,22&quot; pushedimage=&quot;base\key_p.png,16,16,16,22&quot; size=&quot;213,73&quot; textcolor=&quot;0xFF525252&quot; font=&quot;3&quot;" />
+	<Style name="s_py9_function_key" value="normalimage=&quot;base\key_func.png,16,16,16,22&quot; pushedimage=&quot;base\key_func_p.png,16,16,16,22&quot; font=&quot;3&quot;" />
+	<Style name="s_editorKeyboard_key" value="normalimage=&quot;base\trans.png&quot; bkcolor=&quot;0x00000000&quot; hotcolor=&quot;0x00000000&quot; pushedimage=&quot;base\buttonbg_float_function_pressed.png,5,5,5,5&quot; fgsize=&quot;45,45&quot; textcolor=&quot;0xFF8F8F8F&quot; font=&quot;2&quot;" />
+	<Style name="s_sym_key" value="bkimage=&quot;base\more_cands_filtercategory_n.png,5,5,5,5&quot; normalimage=&quot;base\trans.png&quot; disabledimage=&quot;base\trans.png&quot; pushedimage=&quot;base\more_cands_filtercategory_p.png,5,5,5,5&quot; size=&quot;113,85&quot; textcolor=&quot;0xFF525252&quot;"/>
+
+	<DataSource name="Symbols" type="gridData" source="sogou_symbols.xml" />
+	<DataSource name="Emojis" type="gridData" source="emoji.xml" />
+	<DataSource name="PY9Symbols"  source="sogou_py_symbols.xml" />
+	<DataSource name="HWSymbols"  source="sogou_hw_symbols.xml" />
+	<DataSource name="NumberSymbols"  source="sogou_number_symbols.xml" />
+
+	<!-- ControlBar And CandidatesWnd -->
+	<Tab name="CandsOrToolsBar" default="ToolsBar" size="1080,388" pos="0,0" >
+		<Layout name="ToolsBar" pos="0,0" size="1080,76" bkimage="base\candidate_bg.png">
+			<Key function="setting" style="s_toolsBar_key"  enablemove="true" pos="0,0" pushedimage="base\trans.png" fgpos="78,17" fgimg="base\ime_function_multimedia.png" fg_pushedimage="base\ime_function_multimedia.png" fg_disabledimage="base\ime_function_multimedia.png"/>
+			<!--Key function="emoji" style="s_toolsBar_key" pos="197,0" fgpos="78,17" fgimg="base\ime_function_expression.png" fg_pushedimage="base\ime_function_expression_p.png" fg_disabledimage="base\ime_function_expression.png" switch_to="Keyboard_emoji"/>-->
+			<Key name="switch" style="s_toolsBar_key"  enablemove="true" pos="197,0" fgpos="78,17"  fgimg="base\ime_function_switch.png" fg_pushedimage="base\ime_function_switch.png" fg_disabledimage="base\ime_function_switch.png" fg_selectimage="base\ime_function_switch_p.png" switch_to="Keyboard_switch"/>
+			<Key function="voice" style="s_toolsBar_key"  enablemove="true" pos="394,0" fgpos="78,17" checkedimage="base\ime_function_voice_p.png" fgimg="base\ime_function_voice.png" fg_pushedimage="base\ime_function_voice.png" fg_disabledimage="base\ime_function_voice.png" switch_to="Keyboard_voice"/>
+			<Key function="null" style="s_toolsBar_key"  enablemove="true" pushedimage="base\trans.png" pos="591,0" size="390,76" />
+			<Key bkimage="base\splitLine.png" size="2,70" pos="982,4" style="s_toolsBar_key" />
+			<Key function="hide" style="s_toolsBar_key"  enablemove="true" pos="986,0" size="94,76" fgpos="25,17" fgimg="base\close.png" fg_pushedimage="base\close_p.png" />
+		</Layout>
+		<Layout name="CandidateWnd" pos="0,0" size="1080,76" bkimage="base\candidate_bg.png">
+			<List name="Candidates" pos="5,0" size="975,76" bkimage="base\trans.png" font="2" maxwidth="950" pushedimage="base\key_qwerty_p.png,16,16,16,22" selecttextcolor="0xFFFF642B" direct="horizon" cell_size="80,76" cellpadding="22,0,0,1"  item_fgsize="15,15" item_widthAutoFit="true" item_correctimg="base\correctmark.png" item_correctselectimg="base\correctmarkh.png" item_cloudimg="base\cloud_correct.png" item_cloudselectimg="base\cloud_correct_h.png" item_heightAutoFit="false" item_minwidth="20" enableselected="true" item_textfont="2" item_textcolor="0xFF616161" min_textfontsize="20" max_textfontsize="40" sep_size="0,0" sep_color="0x00000000" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='base\trans.png,23,23,44,44'" item_pushedimage="file='base\buttonbg_float_function_pressed.png'" />
+			<Key bkimage="base\splitLine.png" size="2,70" pos="982,4" style="s_toolsBar_key" />
+			<Key name="MoreCandidates" style="s_toolsBar_key"  size="94,76" pos="986,0" disabledimage="base\candidate_bg.png" fgpos="25,17" fgimg="base\more.png" fg_pushedimage="base\more.png"  fg_disabledimage="base\no_more.png" switch_to="keyboard_moreCand" />
+			<Key name="closeAssociate" style="s_toolsBar_key" bkimg="base\trans.png" size="94,76" pos="986,0" fgpos="25,17" fgimg="base\close_association.png" fg_pushedimage="base\close_association.png" />
+		</Layout>
+	</Tab>
+
+
+	<!-- Keyboard Layout -->
+	<Tab name="Keyboards" default="Keyboard_py26" size="1080, 388" pos="0,0">
+		<!-- PinYin26 Keyboard -->
+		<Layout name="Keyboard_py26" size="1080,388" pos="0,80">
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080,76">
+				<Key text="Q" unicode_ascii="q" pos="9,0" text2="1" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="1,Q,q" longpress_sel_index="0"/>
+				<Key text="W" unicode_ascii="w" pos="115,0" text2="2" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"   longpress="true" longpress_text="W,2,w" longpress_sel_index="1"/>
+				<Key text="E" unicode_ascii="e" pos="221,0" text2="3" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"   longpress="true" longpress_text="E,3,e" longpress_sel_index="1"/>
+				<Key text="R" unicode_ascii="r" pos="327,0" text2="4" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="R,4,r" longpress_sel_index="1"/>
+				<Key text="T" unicode_ascii="t" pos="433,0" text2="5" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="T,5,t" longpress_sel_index="1"/>
+				<Key text="Y" unicode_ascii="y" pos="539,0" text2="6" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="Y,6,y" longpress_sel_index="1"/>
+				<Key text="U" unicode_ascii="u" pos="645,0" text2="7" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="U,7,u" longpress_sel_index="1"/>
+				<Key text="I" unicode_ascii="i" pos="751,0" text2="8" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="I,8,i" longpress_sel_index="1"/>
+				<Key text="O" unicode_ascii="o" pos="857,0" text2="9" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="O,9,o" longpress_sel_index="2"/>
+				<Key text="P" unicode_ascii="p" pos="963,0" text2="0" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="P,p,0" longpress_sel_index="2"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key text="A" unicode_ascii="a" pos="64,0" text2="~" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="~,A,a" longpress_sel_index="0" />
+				<Key text="S" unicode_ascii="s" pos="170,0" text2="！" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="S,!,s" longpress_sel_index="1" />
+				<Key text="D" unicode_ascii="d" pos="276,0" text2="@" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="D,@,d" longpress_sel_index="1"/>
+				<Key text="F" unicode_ascii="f" pos="382,0" text2="#" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="F,#,f" longpress_sel_index="1"/>
+				<Key text="G" unicode_ascii="g" pos="488,0" text2="%" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="G,%,g" longpress_sel_index="1"/>
+				<Key text="H" unicode_ascii="h" pos="594,0" text2="“" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="H,“,h" longpress_sel_index="1"/>
+				<Key text="J" unicode_ascii="j" pos="700,0" text2="”" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,”,j" longpress_sel_index="1"/>
+				<Key text="K" unicode_ascii="k" pos="806,0" text2="*" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="K,*,k" longpress_sel_index="2"/>
+				<Key text="L" unicode_ascii="l" pos="912,0" text2="？" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="L,l,?" longpress_sel_index="2"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key text="分词" name="'" unicode_ascii="'" size="155,73" pos="9,0" style="s_function_key"/>
+				<Key text="Z" unicode_ascii="z"  pos="170,0" text2="（" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Z,（,z" longpress_sel_index="1"/>
+				<Key text="X" unicode_ascii="x"  pos="276,0" text2="）" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="X,）,x" longpress_sel_index="1"/>
+				<Key text="C" unicode_ascii="c"  pos="382,0" text2="-" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="C,-,c" longpress_sel_index="1"/>
+				<Key text="V" unicode_ascii="v"  pos="488,0" text2="_" text2_font="9" text2_rect="75,1,16,25" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="V,_,v" longpress_sel_index="1"/>
+				<Key text="B" unicode_ascii="b"  pos="594,0" text2="：" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="B,：,b" longpress_sel_index="1"/>
+				<Key text="N" unicode_ascii="n"  pos="700,0" text2="；" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="N,；,n" longpress_sel_index="1"/>
+				<Key text="M" unicode_ascii="m"  pos="806,0" text2="/" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="M,/,m" longpress_sel_index="2"/>
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="符" name="symbol" style="s_function_key"  size="155,73" pos="9,0" switch_to="Keyboard_symbol" />
+				<Key text="123" name="123" style="s_function_key" size="150,73" pos="170,0" switch_to="Keyboard_number"/>
+				<Key direct_output="true" text="，" output="，" unicode="0xFF0C"  pos="326,0" />
+				<Key function="space"  fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="74,38" fgsize="60,15" size="208,73" pos="433,0" longpress="true"/>
+				<Key direct_output="true" text="。" output="。" unicode="0x3002"  pos="647,0" />
+				<Key function="ch_en" size="150,73" pos="754,0" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgpos="48,12" fgsize="53,53" switch_to="Keyboard_en26" style="s_function_key"/>
+				<Key function="enter" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1" style="s_function_key"/>
+			</Layout>
+		</Layout>
+		<!-- English26 Keyboard   shiftA="0" -->
+		<Layout name="Keyboard_en26" size="1080,388" pos="0,80" >
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080, 76">
+				<Key text="q" unicode_ascii="q" pos="9,0" text2="1" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="1,Q,q" longpress_sel_index="0"/>
+				<Key text="w" unicode_ascii="w" pos="115,0" text2="2" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="W,2,w" longpress_sel_index="1"/>
+				<Key text="e" unicode_ascii="e" pos="221,0" text2="3" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="E,3,e" longpress_sel_index="1"/>
+				<Key text="r" unicode_ascii="r" pos="327,0" text2="4" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="R,4,r" longpress_sel_index="1"/>
+				<Key text="t" unicode_ascii="t" pos="433,0" text2="5" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="T,5,t" longpress_sel_index="1"/>
+				<Key text="y" unicode_ascii="y" pos="539,0" text2="6" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Y,6,y" longpress_sel_index="1"/>
+				<Key text="u" unicode_ascii="u" pos="645,0" text2="7" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="U,7,u" longpress_sel_index="1"/>
+				<Key text="i" unicode_ascii="i" pos="751,0" text2="8" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="I,8,i" longpress_sel_index="1"/>
+				<Key text="o" unicode_ascii="o" pos="857,0" text2="9" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="O,9,o" longpress_sel_index="2"/>
+				<Key text="p" unicode_ascii="p" pos="963,0" text2="0" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="P,p,0" longpress_sel_index="2"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key text="a" unicode_ascii="a" pos="64,0" text2="~" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="~,A,a" longpress_sel_index="0"/>
+				<Key text="s" unicode_ascii="s" pos="170,0" text2="!" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="S,!,s" longpress_sel_index="1"/>
+				<Key text="d" unicode_ascii="d" pos="276,0" text2="@" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="D,@,d" longpress_sel_index="1"/>
+				<Key text="f" unicode_ascii="f" pos="382,0" text2="#" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="F,#,f" longpress_sel_index="1"/>
+				<Key text="g" unicode_ascii="g" pos="488,0" text2="%" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="G,%,g" longpress_sel_index="1"/>
+				<Key text="h" unicode_ascii="h" pos="594,0" text2="&apos;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="H,&apos;,h" longpress_sel_index="1"/>
+				<Key text="j" unicode_ascii="j" pos="700,0" text2="&amp;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,&amp;,j" longpress_sel_index="1"/>
+				<Key text="k" unicode_ascii="k" pos="806,0" text2="*" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="K,*,k" longpress_sel_index="2"/>
+				<Key text="l" unicode_ascii="l" pos="912,0" text2="?" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="L,l,?" longpress_sel_index="2"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key function="shift" size="155,73" fgimg="base\shift.png" fg_pushedimage="base\shift_p.png" fgsize="36,36" pos="9,0" switch_to="Keyboard_en26_temp_UP" style="s_function_key"/>
+				<Key text="z" unicode_ascii="z" pos="170,0" text2="(" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Z,（,z" longpress_sel_index="1"/>
+				<Key text="x" unicode_ascii="x"  pos="276,0" text2=")" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="X,）,x" longpress_sel_index="1"/>
+				<Key text="c" unicode_ascii="c"  pos="382,0" text2="-" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="C,-,c" longpress_sel_index="1"/>
+				<Key text="v" unicode_ascii="v"  pos="488,0" text2="_" text2_font="9" text2_rect="75,1,16,25" text2_color="0xFFA9A9A9" longpress="true" longpress_text="V,_,v" longpress_sel_index="1"/>
+				<Key text="b" unicode_ascii="b"  pos="594,0" text2=":" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="B,：,b" longpress_sel_index="1"/>
+				<Key text="n" unicode_ascii="n"  pos="700,0" text2=";" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="N,；,n" longpress_sel_index="1"/>
+				<Key text="m" unicode_ascii="m"  pos="806,0" text2="/" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="M,/,m" longpress_sel_index="2"/>
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="!?#" name="symbol" style="s_function_key"  size="103,73" pos="9,0" switch_to="Keyboard_en26_Symbol" />
+				<Key text="123" name="123" style="s_function_key" size="101,73" pos="118,0" switch_to="Keyboard_number_en"/>
+				<Key function="dictionary" name="dictionary" style="s_function_key" fgimg="base\predict.png" fg_pushedimage="base\predict_p.png" fgsize="30,34" size="101,73" pos="225,0" toggle="0" toggle_fgimg="base\predict_s_p.png" toggle_fg_pushedimage="base\predict_s.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0x002C" pos="331,0" size="101,73" />
+				<Key function="space" fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="74,38" fgsize="60,15" size="208,73" pos="438,0" longpress="true"/>
+				<Key direct_output="true" text="." name="." output="." unicode="0x002E" pos="652,0" size="101,73" />
+				<Key function="ch_en" style="s_function_key" size="147,73" pos="759,0" fgimg="base\input_en.png" fg_pushedimage="base\input_en.png" fgpos="48,9" fgsize="53,53" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="enter" style="s_function_key" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_en26_temp_UP" size="1080, 388" pos="0,81" >
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080,76">
+				<Key text="Q" unicode_ascii="Q" pos="9,0" text2="1" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="1,Q,q" longpress_sel_index="0"/>
+				<Key text="W" unicode_ascii="W" pos="115,0" text2="2" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="W,2,w" longpress_sel_index="1"/>
+				<Key text="E" unicode_ascii="E" pos="221,0" text2="3" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="E,3,e" longpress_sel_index="1"/>
+				<Key text="R" unicode_ascii="R" pos="327,0" text2="4" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="R,4,r" longpress_sel_index="1"/>
+				<Key text="T" unicode_ascii="T" pos="433,0" text2="5" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="T,5,t" longpress_sel_index="1"/>
+				<Key text="Y" unicode_ascii="Y" pos="539,0" text2="6" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Y,6,y" longpress_sel_index="1"/>
+				<Key text="U" unicode_ascii="U" pos="645,0" text2="7" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="U,7,u" longpress_sel_index="1"/>
+				<Key text="I" unicode_ascii="I" pos="751,0" text2="8" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="I,8,i" longpress_sel_index="1"/>
+				<Key text="O" unicode_ascii="O" pos="857,0" text2="9" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="O,9,o" longpress_sel_index="2"/>
+				<Key text="P" unicode_ascii="P" pos="963,0" text2="0" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="P,p,0" longpress_sel_index="2"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key text="A" unicode_ascii="A"  pos="64,0" text2="~" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="~,A,a" longpress_sel_index="0"/>
+				<Key text="S" unicode_ascii="S"  pos="170,0" text2="!" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="S,!,s" longpress_sel_index="1" />
+				<Key text="D" unicode_ascii="D"  pos="276,0" text2="@" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="D,@,d" longpress_sel_index="1"/>
+				<Key text="F" unicode_ascii="F"  pos="382,0" text2="#" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="F,#,f" longpress_sel_index="1"/>
+				<Key text="G" unicode_ascii="G"  pos="488,0" text2="%" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="G,%,g" longpress_sel_index="1"/>
+				<Key text="H" unicode_ascii="H"  pos="594,0" text2="&apos;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="H,&apos;,h" longpress_sel_index="1"/>
+				<Key text="J" unicode_ascii="J"  pos="700,0" text2="&amp;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,&amp;,j" longpress_sel_index="1"/>
+				<Key text="K" unicode_ascii="K"  pos="806,0" text2="*" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="K,*,k" longpress_sel_index="2"/>
+				<Key text="L" unicode_ascii="L"  pos="912,0" text2="?" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="L,l,?" longpress_sel_index="2"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key function="shift" size="155,73" fgimg="base\shift_s.png" fg_pushedimage="base\shift_s_p.png" fgsize="36,36" pos="9,0" switch_to="Keyboard_en26_UP" style="s_function_key"/>
+				<Key text="Z" unicode_ascii="Z" pos="170,0" text2="(" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Z,（,z" longpress_sel_index="1"/>
+				<Key text="X" unicode_ascii="X" pos="276,0" text2=")" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="X,）,x" longpress_sel_index="1"/>
+				<Key text="C" unicode_ascii="C" pos="382,0" text2="-" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="C,-,c" longpress_sel_index="1"/>
+				<Key text="V" unicode_ascii="V" pos="488,0" text2="_" text2_font="9" text2_rect="75,1,16,25" text2_color="0xFFA9A9A9" longpress="true" longpress_text="V,_,v" longpress_sel_index="1"/>
+				<Key text="B" unicode_ascii="B" pos="594,0" text2=":" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="B,：,b" longpress_sel_index="1"/>
+				<Key text="N" unicode_ascii="N" pos="700,0" text2=";" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="N,；,n" longpress_sel_index="1"/>
+				<Key text="M" unicode_ascii="M" pos="806,0" text2="/" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="M,/,m" longpress_sel_index="2"/>
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="!?#" name="symbol" style="s_function_key"  size="103,73" pos="9,0" switch_to="Keyboard_en26_Symbol" />
+				<Key text="123" name="123" style="s_function_key" size="101,73" pos="118,0" switch_to="Keyboard_number_en"/>
+				<Key function="dictionary" name="dictionary_temp" style="s_function_key" fgimg="base\predict.png" fg_pushedimage="base\predict_p.png" fgsize="30,34" size="101,73" pos="225,0" toggle="0" toggle_fgimg="base\predict_s_p.png" toggle_fg_pushedimage="base\predict_s.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0x002C" pos="331,0" size="101,73" />
+				<Key function="space" fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="74,38" fgsize="60,15" size="208,73" pos="438,0"/>
+				<Key direct_output="true" text="." name="." output="." unicode="0x002E" pos="652,0" size="101,73" />
+				<Key function="ch_en" style="s_function_key" size="147,73" pos="759,0" fgimg="base\input_en.png" fg_pushedimage="base\input_en.png" fgpos="48,9" fgsize="53,53" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="enter" style="s_function_key" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_en26_UP" size="1080, 388" pos="0,81" >
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080,76">
+				<Key text="Q" unicode_ascii="Q" pos="9,0" text2="1" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="1,Q,q" longpress_sel_index="0"/>
+				<Key text="W" unicode_ascii="W" pos="115,0" text2="2" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="W,2,w" longpress_sel_index="1"/>
+				<Key text="E" unicode_ascii="E" pos="221,0" text2="3" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="E,3,e" longpress_sel_index="1"/>
+				<Key text="R" unicode_ascii="R" pos="327,0" text2="4" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="R,4,r" longpress_sel_index="1"/>
+				<Key text="T" unicode_ascii="T" pos="433,0" text2="5" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="T,5,t" longpress_sel_index="1"/>
+				<Key text="Y" unicode_ascii="Y" pos="539,0" text2="6" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Y,6,y" longpress_sel_index="1"/>
+				<Key text="U" unicode_ascii="U" pos="645,0" text2="7" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="U,7,u" longpress_sel_index="1"/>
+				<Key text="I" unicode_ascii="I" pos="751,0" text2="8" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="I,8,i" longpress_sel_index="1"/>
+				<Key text="O" unicode_ascii="O" pos="857,0" text2="9" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="O,9,o" longpress_sel_index="2"/>
+				<Key text="P" unicode_ascii="P" pos="963,0" text2="0" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="P,p,0" longpress_sel_index="2"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key text="A" unicode_ascii="A"  pos="64,0" text2="~" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="~,A,a" longpress_sel_index="0"/>
+				<Key text="S" unicode_ascii="S"  pos="170,0" text2="!" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="S,!,s" longpress_sel_index="1" />
+				<Key text="D" unicode_ascii="D"  pos="276,0" text2="@" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="D,@,d" longpress_sel_index="1"/>
+				<Key text="F" unicode_ascii="F"  pos="382,0" text2="#" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="F,#,f" longpress_sel_index="1"/>
+				<Key text="G" unicode_ascii="G"  pos="488,0" text2="%" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="G,%,g" longpress_sel_index="1"/>
+				<Key text="H" unicode_ascii="H"  pos="594,0" text2="&apos;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="H,&apos;,h" longpress_sel_index="1"/>
+				<Key text="J" unicode_ascii="J"  pos="700,0" text2="&amp;" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,&amp;,j" longpress_sel_index="1"/>
+				<Key text="K" unicode_ascii="K"  pos="806,0" text2="*" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="K,*,k" longpress_sel_index="2"/>
+				<Key text="L" unicode_ascii="L"  pos="912,0" text2="?" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="L,l,?" longpress_sel_index="2"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key function="shift" size="155,73" fgimg="base\shift_s_l.png" fg_pushedimage="base\shift_s_l_p.png" fgsize="36,36" pos="9,0" switch_to="Keyboard_en26" style="s_function_key"/>
+				<Key text="Z" unicode_ascii="Z" pos="170,0" text2="(" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Z,（,z" longpress_sel_index="1"/>
+				<Key text="X" unicode_ascii="X" pos="276,0" text2=")" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="X,）,x" longpress_sel_index="1"/>
+				<Key text="C" unicode_ascii="C" pos="382,0" text2="-" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="C,-,c" longpress_sel_index="1"/>
+				<Key text="V" unicode_ascii="V" pos="488,0" text2="_" text2_font="9" text2_rect="75,1,16,25" text2_color="0xFFA9A9A9" longpress="true" longpress_text="V,_,v" longpress_sel_index="1"/>
+				<Key text="B" unicode_ascii="B" pos="594,0" text2=":" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="B,：,b" longpress_sel_index="1"/>
+				<Key text="N" unicode_ascii="N" pos="700,0" text2=";" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="N,；,n" longpress_sel_index="1"/>
+				<Key text="M" unicode_ascii="M" pos="806,0" text2="/" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="M,/,m" longpress_sel_index="2"/>
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="!?#" name="symbol" style="s_function_key"  size="103,73" pos="9,0" switch_to="Keyboard_en26_Symbol" />
+				<Key text="123" name="123" style="s_function_key" size="101,73" pos="118,0" switch_to="Keyboard_number_en"/>
+				<Key function="dictionary" name="dictionary_up" style="s_function_key" fgimg="base\predict.png" fg_pushedimage="base\predict_p.png" fgsize="30,34" size="101,73" pos="225,0" toggle="0" toggle_fgimg="base\predict_s_p.png" toggle_fg_pushedimage="base\predict_s.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0x002C" pos="331,0" size="101,73" />
+				<Key function="space" fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="74,38" fgsize="60,15" size="208,73" pos="438,0" longpress="true"/>
+				<Key direct_output="true" text="." name="." output="." unicode="0x002E" pos="652,0" size="101,73" />
+				<Key function="ch_en" style="s_function_key" size="147,73" pos="759,0" fgimg="base\input_en.png" fg_pushedimage="base\input_en.png" fgpos="48,9" fgsize="53,53" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="enter" style="s_function_key" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<!-- PinYin9 Keyboard -->
+		<Layout name="Keyboard_py9" size="1080,388" pos="0,80">
+			<!-- First line -->
+			<Layout name="" pos="6,0" size="192,225">
+				<List name="symbollist" size="192,225" pos="0,0"  direct="vertical" cell_size="192,54" cellpadding="10,6,10,8" selecttextcolor="0xFF2B3547" bkimage="base\key_qwerty.png,16,14,16,20" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="4" item_textcolor="0xFF2B3547" item_minwidth="20" enableselected="false"  sep_size="1,170" sep_color="0xFFCCCCCC" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='base\trans.png,10,10,10,10'" item_pushedimage="file='base\buttonbg_float_function_pressed.png,1,1,1,1'" dataSource="PY9Symbols" />
+			</Layout>
+			<Layout name="" pos="203,0" size="870,76">
+				<Key text="1" unicode_ascii="1" style="s_py9_key" size="213,73" pos="0,0" longpress="true" longpress_text="1" longpress_sel_index="0" />
+				<Key text="ABC" unicode_ascii="2" style="s_py9_key" size="213,73" pos="217,0" text2="2" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9"  longpress="true" longpress_text="A,B,C,2,a,b,c" longpress_sel_index="3" />
+				<Key text="DEF" unicode_ascii="3" style="s_py9_key" size="213,73" pos="434,0" text2="3" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="D,E,F,d,e,f,3" longpress_sel_index="6" />
+				<Key function="delete" style="s_function_key" size="213,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="654,0" longpress="true"/>
+			</Layout>
+			<Layout name="" pos="203,76" size="870, 76">
+				<Key text="GHI" unicode_ascii="4" style="s_py9_key" size="213,73" pos="0,0" text2="4" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="4,G,H,I,g,h,i" longpress_sel_index="3"/>
+				<Key text="JKL" unicode_ascii="5" style="s_py9_key" size="213,73" pos="217,0" text2="5" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,K,L,5,j,k,l" longpress_sel_index="3"/>
+				<Key text="MNO" unicode_ascii="6" style="s_py9_key" size="213,73" pos="434,0" text2="6" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="M,N,O,m,n,o,6" longpress_sel_index="6"/>
+				<Key function="reset" text="重输" style="s_function_key"  size="213,73" pos="654,0"  />
+			</Layout>
+			<Layout name="" pos="203,152" size="870,76">
+				<Key text="PQRS" unicode_ascii="7" style="s_py9_key" size="213,73" pos="0,0" text2="7" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="7,P,Q,R,S,p,q,r,s" longpress_sel_index="0"/>
+				<Key text="TUV" unicode_ascii="8" style="s_py9_key" size="213,73" pos="217,0" text2="8" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="T,U,V,8,t,u,v" longpress_sel_index="3"/>
+				<Key text="WXYZ" unicode_ascii="9" style="s_py9_key" size="213,73" pos="434,0" text2="9" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="W,X,Y,Z,w,x,y,z,9" longpress_sel_index="8"/>
+				<Key text="0" unicode_ascii="0" style="s_function_key"  size="213,73" pos="654,0" longpress="1" longpress_mode="2" longpress_text="0" />
+			</Layout>
+			<Layout name="" pos="6,228" size="1071, 76">
+				<Key text="符" name="symbol" style="s_function_key"   size="192,73" pos="0,0" switch_to="Keyboard_symbol" />
+				<Key text="123" name="123" style="s_function_key"   size="213,73" pos="197,0" switch_to="Keyboard_number" />
+				<Key function="space"   fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="76,38" fgsize="60,15" size="213,73" pos="414,0" longpress="true"/>
+				<Key function="ch_en" style="s_function_key"   size="213,73" pos="631,0" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgpos="80,12" fgsize="53,53" switch_to="Keyboard_en26"/>
+				<Key function="enter" style="s_function_key"   fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" size="213,73" pos="851,0"  enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+        <Layout name="Keyboard_bihua" size="1080,388" pos="0,80">
+            <Layout name="" pos="6,0" size="192,225">
+                <List name="bhsymbollist" size="192,225" pos="0,0"  direct="vertical" cell_size="192,54" cellpadding="10,6,10,8" selecttextcolor="0xFF2B3547" bkimage="base\key_qwerty.png,16,14,16,20" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="4" item_textcolor="0xFF2B3547" item_minwidth="20" enableselected="false" sep_size="1,170" sep_color="0xFFCCCCCC" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='base\trans.png,10,10,10,10'" item_pushedimage="file='base\buttonbg_float_function_pressed.png,1,1,1,1'" dataSource="PY9Symbols" />
+            </Layout>
+            <Layout name="" pos="203,0" size="870,76">
+                <Key text="一"  unicode_ascii="1" style="s_py9_key" size="213,73" pos="0,0"  text2="1" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="1" longpress_sel_index="0"/>
+                <Key text="丨" unicode_ascii="2" style="s_py9_key" size="213,73" pos="217,0" text2="2" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="2" longpress_sel_index="0"/>
+                <Key text="丿" unicode_ascii="3" style="s_py9_key" size="213,73" pos="434,0" text2="3" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="3" longpress_sel_index="0"/>
+                <Key function="delete" style="s_function_key" size="213,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="654,0" longpress="true"/>
+            </Layout>
+            <Layout name="" pos="203,76" size="870,76">
+                <Key text="丶" unicode_ascii="4" style="s_py9_key" size="213,73" pos="0,0" text2="4" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="4" longpress_sel_index="0"/>
+                <Key text="ㄥ" unicode_ascii="5" style="s_py9_key" size="213,73" pos="217,0" text2="5" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="5" longpress_sel_index="0"/>
+                <Key text="通配" unicode_ascii="6" style="s_py9_key" size="213,73" pos="434,0" text2="6" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="6" longpress_sel_index="0"/>
+                <Key function="reset" text="重输" style="s_function_key" size="213,73" pos="654,0"  />
+            </Layout>
+            <Layout name="" pos="203,152" size="870,76">
+                <Key text="分词" unicode_ascii="'" style="s_py9_key" size="213,73" pos="0,0" text2="7" text2_font="7" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="7" longpress_sel_index="0"/>
+                <Key direct_output="true" text="：" output="：" style="s_py9_key" size="213,73" pos="217,0" text2="8" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="8" longpress_sel_index="0"/>
+                <Key direct_output="true" text="；" output="；" style="s_py9_key" size="213,73" pos="434,0" text2="9" text2_font="9" text2_rect="190,10,16,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="9" longpress_sel_index="0"/>
+				<Key text="0" unicode_ascii="0" style="s_function_key"  size="213,73" pos="654,0" longpress="1" longpress_mode="2" longpress_text="0" />
+            </Layout>
+            <Layout name="" pos="6,228" size="1071, 76">
+                <Key text="符" name="symbol" style="s_function_key" size="192,73" pos="0,0" switch_to="Keyboard_symbol" />
+                <Key text="123" name="123" style="s_function_key" size="213,73" pos="197,0" switch_to="Keyboard_number" />
+                <Key function="space"  fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="76,38" fgsize="60,15" size="213,73" pos="414,0" longpress="true"/>
+                <Key function="ch_en" size="213,73" pos="631,0" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgpos="80,12" fgsize="53,53" switch_to="Keyboard_en26"/>
+				<Key function="enter" style="s_function_key"   fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" size="213,73" pos="851,0"  enter_pys="1"/>
+            </Layout>
+        </Layout>
+
+		<Layout name="Keyboard_wubi" size="1080, 388" pos="0,80">
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080, 76">
+				<Key text="Q" unicode_ascii="q" pos="9,0" text2="1" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="1,Q,q" longpress_sel_index="0"/>
+				<Key text="W" unicode_ascii="w" pos="115,0" text2="2" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="W,2,w" longpress_sel_index="1"/>
+				<Key text="E" unicode_ascii="e" pos="221,0" text2="3" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="E,3,e" longpress_sel_index="1"/>
+				<Key text="R" unicode_ascii="r" pos="327,0" text2="4" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="R,4,r" longpress_sel_index="1"/>
+				<Key text="T" unicode_ascii="t" pos="433,0" text2="5" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="T,5,t" longpress_sel_index="1"/>
+				<Key text="Y" unicode_ascii="y" pos="539,0" text2="6" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Y,6,y" longpress_sel_index="1"/>
+				<Key text="U" unicode_ascii="u" pos="645,0" text2="7" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="U,7,u" longpress_sel_index="1"/>
+				<Key text="I" unicode_ascii="i" pos="751,0" text2="8" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="I,8,i" longpress_sel_index="1"/>
+				<Key text="O" unicode_ascii="o" pos="857,0" text2="9" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="O,9,o" longpress_sel_index="2"/>
+				<Key text="P" unicode_ascii="p" pos="963,0" text2="0" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="P,p,0" longpress_sel_index="2"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key text="A" unicode_ascii="a" pos="64,0" text2="~" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="~,A,a" longpress_sel_index="0"/>
+				<Key text="S" unicode_ascii="s" pos="170,0" text2="！" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="S,!,s" longpress_sel_index="1" />
+				<Key text="D" unicode_ascii="d" pos="276,0" text2="@" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="D,@,d" longpress_sel_index="1"/>
+				<Key text="F" unicode_ascii="f" pos="382,0" text2="#" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="F,#,f" longpress_sel_index="1"/>
+				<Key text="G" unicode_ascii="g" pos="488,0" text2="%" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="G,%,g" longpress_sel_index="1"/>
+				<Key text="H" unicode_ascii="h" pos="594,0" text2="“" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="H,“,h" longpress_sel_index="1"/>
+				<Key text="J" unicode_ascii="j" pos="700,0" text2="”" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="J,”,j" longpress_sel_index="1"/>
+				<Key text="K" unicode_ascii="k" pos="806,0" text2="*" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="K,*,k" longpress_sel_index="2"/>
+				<Key text="L" unicode_ascii="l" pos="912,0" text2="？" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="L,l,?" longpress_sel_index="2"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key function="wubi_py" text="拼音" name="wubipinyin"  size="155,73" pos="9,0" style="s_function_key" checkedimage="base\key_func_qwerty_p.png,10,10,15,15" selecttextcolor="0xFF525252" toggle="1" toggle_bkimg="base\key_func_qwerty_p.png,10,10,15,15" toggle_bk_pushedimage="base\key_func_qwerty_p.png,10,10,15,15"/>
+				<Key text="Z" unicode_ascii="z"  pos="170,0" text2="（" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="Z,（,z" longpress_sel_index="1"/>
+				<Key text="X" unicode_ascii="x"  pos="276,0" text2="）" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="X,）,x" longpress_sel_index="1"/>
+				<Key text="C" unicode_ascii="c"  pos="382,0" text2="-" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="C,-,c" longpress_sel_index="1"/>
+				<Key text="V" unicode_ascii="v"  pos="488,0" text2="_" text2_font="9" text2_rect="75,1,16,25" text2_color="0xFFA9A9A9" longpress="true" longpress_text="V,_,v" longpress_sel_index="1"/>
+				<Key text="B" unicode_ascii="b"  pos="594,0" text2="：" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="B,：,b" longpress_sel_index="1"/>
+				<Key text="N" unicode_ascii="n"  pos="700,0" text2="；" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="N,；,n" longpress_sel_index="1"/>
+				<Key text="M" unicode_ascii="m"  pos="806,0" text2="/" text2_font="9" text2_rect="75,10,18,17" text2_color="0xFFA9A9A9" longpress="true" longpress_text="M,/,m" longpress_sel_index="2"/>
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="符" name="symbol" style="s_function_key" size="155,73" pos="9,0" switch_to="Keyboard_symbol" />
+				<Key text="123" name="123" style="s_function_key" size="150,73" pos="170,0" switch_to="Keyboard_number"/>
+				<Key direct_output="true" text="，" output="，" unicode="0xFF0C"  pos="326,0" />
+				<Key function="space"  fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="74,38" fgsize="60,15" size="208,73" pos="433,0" longpress="true"/>
+				<Key direct_output="true" text="。" output="。" unicode="0x3002"  pos="647,0" />
+				<Key function="ch_en" size="150,73" pos="754,0" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgpos="48,12" fgsize="53,53" switch_to="Keyboard_en26" style="s_function_key"/>
+				<Key function="enter" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1" style="s_function_key"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_en26_Symbol" size="1080, 388" pos="0,80">
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1080, 76">
+				<Key direct_output="true" text="1" output="1" pos="9,0" />
+				<Key direct_output="true" text="2" output="2" pos="115,0" />
+				<Key direct_output="true" text="3" output="3" pos="221,0" />
+				<Key direct_output="true" text="4" output="4" pos="327,0" />
+				<Key direct_output="true" text="5" output="5" pos="433,0" />
+				<Key direct_output="true" text="6" output="6" pos="539,0" />
+				<Key direct_output="true" text="7" output="7" pos="645,0" />
+				<Key direct_output="true" text="8" output="8" pos="751,0" />
+				<Key direct_output="true" text="9" output="9" pos="857,0" />
+				<Key direct_output="true" text="0" output="0" pos="963,0" />
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,76" size="1080,76">
+				<Key direct_output="true" text="@" output="@" pos="9,0" />
+				<Key direct_output="true" text="#" output="#" pos="115,0" />
+				<Key direct_output="true" text="$" output="$" pos="221,0" />
+				<Key direct_output="true" text="_" output="_" pos="327,0" />
+				<Key direct_output="true" text="&amp;" output="&amp;" pos="433,0" />
+				<Key direct_output="true" text="-" output="-" pos="539,0" />
+				<Key direct_output="true" text="+" output="+" pos="645,0" />
+				<Key direct_output="true" text="(" output="(" pos="751,0" />
+				<Key direct_output="true" text=")" output=")" pos="857,0" />
+				<Key direct_output="true" text="/" output="/" pos="963,0" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,152" size="1080,76">
+				<Key text="更多" name="moresymbol"  size="155,73" pos="9,0" style="s_function_key" checkedimage="base\key_func_qwerty_p.png,10,10,15,15" selecttextcolor="0xFF525252" switch_to="Keyboard_symbol"/>
+				<Key direct_output="true" text="*" output="*" pos="170,0" />
+				<Key direct_output="true" text="&quot;" output="&quot;"  pos="276,0" />
+				<Key direct_output="true" text="'" output="'"  pos="382,0" />
+				<Key direct_output="true" text=":" output=":"  pos="488,0" />
+				<Key direct_output="true" text=";" output=";"  pos="594,0" />
+				<Key direct_output="true" text="!" output="!"  pos="700,0" />
+				<Key direct_output="true" text="?" output="?"  pos="806,0" />
+				<Key function="delete" size="155,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="912,0" longpress="true" style="s_function_key"/>
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,228" size="1080,76">
+				<Key text="ABC" name="symbol" style="s_function_key" size="155,73" pos="9,0" switch_to="Keyboard_en26"/>
+				<Key text="123" name="123" style="s_function_key" size="150,73" pos="170,0" switch_to="Keyboard_number_en"/>
+				<Key direct_output="true" text="," output="," unicode="0x002C"  pos="326,0" />
+				<Key function="space"  fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="134,38" fgsize="60,15" size="367,73" pos="433,0" longpress="true"/>
+				<Key direct_output="true" text="." output="." unicode="0x002E"  pos="806,0" />
+				<Key function="enter" size="155,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="912,0" enter_pys="1" style="s_function_key"/>
+			</Layout>
+		</Layout>
+
+        <!-- Handinput Keyboard -->
+		<Layout name="Keyboard_handInput" pos="0,80" size="1080, 388">
+			<Layout name="Left" pos="0,2" size="203,304">
+				<Key text="符" name="symbol" style="s_function_key" pos="6,0" size="195,73" switch_to="Keyboard_symbol"/>
+				<Key name="hw_mode_switch" style="s_function_key" pos="6,76" size="195,73" fgimg="base\hw_single.png" fg_pushedimage="base\hw_single.png" fgsize="48,48"  toggle="1" toggle_fgimg="base\hw_line.png" toggle_fg_pushedimage="base\hw_line.png"/>
+				<Key direct_output="true" text="。" output="。" style="s_function_key" size="96,73" pos="6,152" />
+				<Key direct_output="true" text="，" output="，" style="s_function_key" size="96,73" pos="107,152" />
+				<Key text="123" name="123"  size="195,73" pos="6,228" style="s_function_key" switch_to="Keyboard_number"/>
+			</Layout>
+			
+			<Handinput name="Handinput"  type="0" pos="203,0" size="675,306" isfullscreen="false" bkcolor="0xffffffff"  inkcolor="0xFFFF0000" mode="0" line_width="3" line_color="0xFFFF0000" auto_time="1000" />
+		
+			<Layout name="Right" pos="878,2" size="197,304">
+				<Key function="delete"  size="195,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="0,0" style="s_function_key" longpress="true"/>
+				<Key function="space" size="195,73" fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="68,38" fgsize="60,15" pos="0,76" style="s_function_key" longpress="true"/>
+				<Key function="ch_en"  size="195,73" pos="0,152" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgpos="70,12"  fgsize="53,53" switch_to="Keyboard_en26" style="s_function_key"/>
+				<Key function="enter" size="195,73" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" pos="0,228" style="s_function_key"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_handInput_fullscreen" pos="0,81" size="1113, 270"  >
+			<!--Handinput name="FSHandinput" type="0" pos="0,0" size="-1, -1" isfullscreen="true" bkcolor="0x25aaaaaa" inkcolor="0xFF000000" mode="0" line_width="2" line_color="0xFFFF0000" auto_time="200" />-->
+
+			<Layout name="" pos="0,0" size="1113,94">
+				<Key name="half_full_hw"  size="182,94" pos="10,0" fgimg="base\hw_full.png" fg_pushedimage="base\hw_full.png" fgsize="72,72" style="s_function_key" switch_to="Keyboard_handInput"/>
+				<Key direct_output="true" text="，" output="，" pos="192,0" size="182,94" />
+				<Key direct_output="true" text="。" output="。" pos="374,0" size="182,94" />
+				<Key direct_output="true" text="？" output="？" pos="556,0" size="182,94" />
+				<Key direct_output="true" text="！" output="！" pos="738,0" size="182,94" />
+				<Key function="delete"  pos="920,0" size="182,94" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" style="s_function_key" longpress="true"/>
+			</Layout>
+
+			<Layout name="" pos="0,81" size="1113,94">
+				<Key text="符" name="symbol"  size="182,94" pos="10,0"  style="s_function_key"   switch_to="Keyboard_symbol"/>
+				<Key text="123" name="123"  size="182,94" pos="192,0"  style="s_function_key"   switch_to="Keyboard_number"/>
+				<Key function="space"  fgimg="base\space.png" fg_pushedimage="base\space.png" fgsize="50,20" size="364,94" pos="374,0" style="s_function_key" longpress="true"/>
+				<Key function="ch_en" size="182,94" pos="738,0" fgimg="base\input_ch.png" fg_pushedimage="base\input_ch.png" fgsize="48,48" switch_to="Keyboard_en26" style="s_function_key"/>
+				<Key function="enter" size="182,94" fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="36,22" pos="920,0" enter_pys="1" style="s_function_key"/>
+			</Layout>
+		</Layout>
+		<!--  end of keyboard_fullscreen_handinput  >-->
+
+		<!-- keyboard_setting -->
+		<Layout name="Keyboard_setting" pos="0,80" size="1080, 388">
+			<Key function="hw_setting" size="180,220" pos="80,50" style="s_editorKeyboard_key" fgsize="132,122" fgpos="15,0" fgimg="base\setting_icon_writer.png" fg_pushedimage="base\setting_icon_writer.png"
+				select_bkcolor="0x00000000" fg_selectimage="base\setting_icon_writer.png" text="手写设置" text_rect="0,114,0,0"  font="6" text_color="0xFF314D7E" />
+
+			<Key function="cand_setting" size="180,220" pos="279,50" style="s_editorKeyboard_key" fgsize="132,122" fgpos="15,0" fgimg="base\setting_icon_text.png" fg_pushedimage="base\setting_icon_text.png"
+				select_bkcolor="0x00000000" fg_selectimage="base\setting_icon_text.png" text="候选字大小" text_rect="0,114,0,0"  font="6" text_color="0xFF314D7E" />
+
+			<Key function="more_setting" size="180,220" pos="489,50" style="s_editorKeyboard_key" fgsize="132,122" fgpos="15,0" fgimg="base\setting_icon_more.png" fg_pushedimage="base\setting_icon_more.png"
+				select_bkcolor="0x00000000" fg_selectimage="base\setting_icon_more.png" text="更多设置" text_rect="0,114,0,0"  font="6" text_color="0xFF314D7E" />
+		</Layout>
+		<!--  end of keyboard_setting  >-->
+
+		<!-- Edit Keyboard -->
+		<Layout name="Keyboard_editor" pos="0,81" size="1080, 388">
+			<Layout name="FirstLine" pos="0,0" size="1113, 200">
+				<Key function="edit_select_all" size="180,82" pos="91,53" fgimg="base\edit_select_all.png" fg_pushedimage="base\edit_select_all.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="全选" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_cut" size="180,82" pos="300,53" fgimg="base\edit_cut.png" fg_pushedimage="base\edit_cut.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="剪切" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_copy" size="180,82" pos="509,53" fgimg="base\edit_copy.png" fg_pushedimage="base\edit_copy.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="复制" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_paste" size="180,82" pos="718,53" fgimg="base\edit_paste.png" fg_pushedimage="base\edit_paste.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="粘贴" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_delete" size="72,72" pos="938,60" fgimg="base\edit_delete.png" fg_pushedimage="base\edit_delete.png" style="s_editorKeyboard_key" fgsize="54,42" />
+			</Layout>
+			<Layout name="SecondLine" pos="0,183" size="1113, 200">
+				<Key function="edit_select" name="edit_select" fgimg="base\edit_select.png" fg_pushedimage="base\edit_select.png" size="180,82" pos="91,-6" select="0" select_bkcolor="0x00000000" select_fgimg="base\edit_select_s.png" style="s_editorKeyboard_key" fgsize="54,45" fgpos="20,20" text="选择" text_rect="50,0,0,0" text_select_color="0xFF074EC8" toggle="1"/>
+				<Key function="edit_left" fgimg="base\ime_function_edit_left.png" fg_pushedimage="base\ime_function_edit_left.png" size="72,72" pos="309,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="base\ime_function_edit_left_s.png" style="s_editorKeyboard_key"/>
+				<Key function="edit_right" fgimg="base\ime_function_edit_right.png" fg_pushedimage="base\ime_function_edit_right.png" size="72,72" pos="518,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="base\ime_function_edit_right_s.png" style="s_editorKeyboard_key" />
+				<Key function="edit_down" fgimg="base\ime_function_edit_down.png" fg_pushedimage="base\ime_function_edit_down.png"  size="72,72" pos="727,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="base\ime_function_edit_down_s.png" style="s_editorKeyboard_key" />
+				<Key function="edit_up" fgimg="base\ime_function_edit_up.png" fg_pushedimage="base\ime_function_edit_up.png" size="72,72" pos="936,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="base\ime_function_edit_up_s.png" style="s_editorKeyboard_key" />
+			</Layout>
+		</Layout>
+
+		<!-- Keyboard number-->
+		<Layout name="Keyboard_number" pos="0,80" size="1080, 388">
+			<Layout name="" pos="6,0" size="192,225">
+				<List name="symbollist_number" size="192,225" pos="0,0"  direct="vertical" cell_size="192,54" cellpadding="10,5,10,5" selecttextcolor="0xFF2B3547" bkimage="base\key_qwerty.png,16,14,16,20" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="4" item_textcolor="0xFF2B3547" item_minwidth="20" enableselected="false"  sep_size="1,170" sep_color="0xFFCCCCCC" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='base\trans.png,10,10,10,10'" item_pushedimage="file='base\buttonbg_float_function_pressed.png,1,1,1,1'" dataSource="NumberSymbols" />
+			</Layout>
+			<Layout name="" pos="203,0" size="870,76">
+				<Key direct_output="true" text="1" output="1" style="s_py9_key" size="213,73" pos="0,0"  />
+				<Key direct_output="true" text="2" output="2" style="s_py9_key" size="213,73" pos="217,0"  />
+				<Key direct_output="true" text="3" output="3" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key function="delete" style="s_function_key"   size="213,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="654,0" longpress="true"/>
+			</Layout>
+			<Layout name="" pos="203,76" size="870, 76">
+				<Key direct_output="true" text="4" output="4" style="s_py9_key" size="213,73" pos="0,0" />
+				<Key direct_output="true" text="5" output="5" style="s_py9_key" size="213,73" pos="217,0" />
+				<Key direct_output="true" text="6" output="6" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key direct_output="true" text="." output="." style="s_function_key"   size="214,73" pos="654,0"  />
+			</Layout>
+			<Layout name="" pos="203,152" size="870,76">
+				<Key direct_output="true" text="7" output="7" style="s_py9_key" size="213,73" pos="0,0" />
+				<Key direct_output="true" text="8" output="8" style="s_py9_key" size="213,73" pos="217,0" />
+				<Key direct_output="true" text="9" output="9" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key direct_output="true" text="@" output="@" style="s_function_key"    size="213,73" pos="654,0"  />
+			</Layout>
+			<Layout name="" pos="6,228" size="1071, 76">
+				<Key text="符" name="symbol" style="s_function_key"   size="192,73" pos="0,0" switch_to="Keyboard_symbol" />
+				<Key name="numberback" style="s_function_key" fgimg="base\back.png" fg_pushedimage="base\back_p.png" fgsize="36,28" size="213,73" pos="197,0" switch_to="Keyboard_py9" remeber_last_keyboard="1"/>
+				<Key direct_output="true" text="0" output="0" style="s_py9_key" size="213,73" pos="414,0" />
+				<Key function="space" style="s_function_key"   fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="76,38" fgsize="60,15" size="213,73" pos="631,0" longpress="true"/>
+				<Key function="enter" style="s_function_key"   fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" size="213,73" pos="851,0"  enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_number_en" pos="0,80" size="1080, 388">
+			<Layout name="" pos="6,0" size="192,225">
+				<List name="symbollist_number_en" size="192,225" pos="0,0"  direct="vertical" cell_size="192,54" cellpadding="10,5,10,5" selecttextcolor="0xFF2B3547" bkimage="base\key_qwerty.png,16,14,16,20" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="4" item_textcolor="0xFF2B3547" item_minwidth="20" enableselected="false"  sep_size="1,170" sep_color="0xFFCCCCCC" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='base\trans.png,10,10,10,10'" item_pushedimage="file='base\buttonbg_float_function_pressed.png,1,1,1,1'" dataSource="NumberSymbols" />
+			</Layout>
+			<Layout name="" pos="203,0" size="870,76">
+				<Key direct_output="true" text="1" output="1" style="s_py9_key" size="213,73" pos="0,0"  />
+				<Key direct_output="true" text="2" output="2" style="s_py9_key" size="213,73" pos="217,0"  />
+				<Key direct_output="true" text="3" output="3" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key function="delete" style="s_function_key"   size="213,73" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fgsize="40,28" pos="654,0" longpress="true"/>
+			</Layout>
+			<Layout name="" pos="203,76" size="870, 76">
+				<Key direct_output="true" text="4" output="4" style="s_py9_key" size="213,73" pos="0,0" />
+				<Key direct_output="true" text="5" output="5" style="s_py9_key" size="213,73" pos="217,0" />
+				<Key direct_output="true" text="6" output="6" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key direct_output="true" text="." output="." style="s_function_key"   size="214,73" pos="654,0"  />
+			</Layout>
+			<Layout name="" pos="203,152" size="870,76">
+				<Key direct_output="true" text="7" output="7" style="s_py9_key" size="213,73" pos="0,0" />
+				<Key direct_output="true" text="8" output="8" style="s_py9_key" size="213,73" pos="217,0" />
+				<Key direct_output="true" text="9" output="9" style="s_py9_key" size="213,73" pos="434,0" />
+				<Key direct_output="true" text="@" output="@" style="s_function_key"    size="213,73" pos="654,0"  />
+			</Layout>
+			<Layout name="" pos="6,228" size="1071, 76">
+				<Key text="!?#" name="symbol" style="s_function_key"   size="192,73" pos="0,0" switch_to="Keyboard_en26_Symbol" />
+				<Key name="ennumberback" style="s_function_key" fgimg="base\back.png" fg_pushedimage="base\back_p.png" fgsize="36,28" size="213,73" pos="197,0" switch_to="Keyboard_en26"/>
+				<Key direct_output="true" text="0" output="0" style="s_py9_key" size="213,73" pos="414,0" />
+				<Key function="space" style="s_function_key"   fgimg="base\space.png" fg_pushedimage="base\space.png" fgpos="76,38" fgsize="60,15" size="213,73" pos="631,0" longpress="true"/>
+				<Key function="enter" style="s_function_key"   fgimg="base\enter.png" fg_pushedimage="base\enter_p.png" fgsize="57,32" size="213,73" pos="851,0"  enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_switch" pos="0,80" size="1080, 388">
+			<!--Key name="switchPY9" size="123,131" pos="138,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_pinyin9.png" fg_pushedimage="base\ime_switch_pinyin9_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_pinyin9_p.png" text="拼音九键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_py9" />
+			<Key name="switchPY26" size="123,131" pos="368,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_pinyin26.png" select="1" fg_pushedimage="base\ime_switch_pinyin26_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_pinyin26_p.png" text="拼音全键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_py26" />
+			<Key name="switchHW" size="123,131" pos="596,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_hw.png" fg_pushedimage="base\ime_switch_hw_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_hw_p.png" text="手写" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_handInput" />
+			<Key name="switchBIHUA" size="123,131" pos="825,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_bihua.png" fg_pushedimage="base\ime_switch_bihua_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_bihua_p.png" text="笔画" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_bihua" />
+			<Key name="switchWUBI" size="123,131" pos="138,167" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_wubi.png" fg_pushedimage="base\ime_switch_wubi_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_wubi_p.png" text="五笔" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_wubi" />
+			<Key name="switchEN26" size="123,131" pos="368,167" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_en26.png" fg_pushedimage="base\ime_switch_en26_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_wubi_p.png" text="英文全键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_en26" />-->
+			<Key name="switchPY9" size="123,131" pos="188,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_pinyin9.png" fg_pushedimage="base\ime_switch_pinyin9_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_pinyin9_p.png" text="拼音九键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_py9" />
+			<Key name="switchPY26" size="123,131" pos="478,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_pinyin26.png" select="1" fg_pushedimage="base\ime_switch_pinyin26_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_pinyin26_p.png" text="拼音全键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_py26" />
+			<Key name="switchHW" size="123,131" pos="768,21" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_hw.png" fg_pushedimage="base\ime_switch_hw_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_hw_p.png" text="手写" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_handInput" />
+			<Key name="switchBIHUA" size="123,131" pos="188,167" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_bihua.png" fg_pushedimage="base\ime_switch_bihua_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_bihua_p.png" text="笔画" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_bihua" />
+			<Key name="switchWUBI" size="123,131" pos="478,167" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_wubi.png" fg_pushedimage="base\ime_switch_wubi_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_wubi_p.png" text="五笔" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_wubi" />
+			<Key name="switchEN26" size="123,131" pos="768,167" style="s_editorKeyboard_key" fgsize="74,69" fgpos="24,13" fgimg="base\ime_switch_en26.png" fg_pushedimage="base\ime_switch_en26_p.png" select_bkcolor="0x00000000" fg_selectimage="base\ime_switch_en26_p.png" text="英文全键" text_rect="0,94,9,12" selecttextcolor="0xFFFF642B" font="7" switch_to="Keyboard_en26" />
+		</Layout>
+
+		<!-- voice -->
+		<Layout name="Keyboard_voice" pos="0,0" size="1080, 388" >
+			<Layout name="" pos="0,0" size="1080, 74" bkimage="base\voice_background.png,1,1,1,1">
+				<Key text="转文字" name="voice_to_text" bkimage="base\trans.png" normalimage="base\trans.png" pushedimage="base\trans.png" font="6" size="81,28" pos="500,23"/>
+				<Key name="voiceback" bkimage="base\trans.png" normalimage="base\trans.png" pushedimage="base\trans.png" fgimg="base\voice_return.png" fg_pushedimage="base\voice_return.png" fgsize="40,30" size="95,74" pos="985,0" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+			</Layout>
+			<Layout name="" pos="0,73" size="1080, 315" bkimage="base\voice_keyboard_bg.png,1,1,1,1">
+				<Key name="voice_language_button" text="普通话" font="7" textcolor="0xFF8F8F8F" selecttextcolor="0xFFFF642B" text_rect="0,5,20,0" normalimage="base\trans.png" bkimage="base\voice_language.png" pushedimage="base\voice_language_p.png" fgsize="18,10" fgpos="90,20"  fgimg="base\voice_selected_arrow.png" fg_pushedimage="base\voice_selected_arrow.png" fg_selectimage="base\voice_selected_arrow_p.png" size="123,50" pos="85,12"/>
+				<Tab name="voice_select_language" pos="0,151" size="1080, 149" bkimage="base\voice_background.png,1,1,1,1">
+					<Radio name="voice_language_putonghua" text="普通话" font="6" textcolor="0xFF5F6267" text_rect="0,5,920,0" selecttextcolor="0xFFFF642B" normalimage="base\trans.png" bkimage="base\voice_background.png,1,1,1,1" pushedimage="base\trans.png" fgsize="34,34" fgpos="1018,20"  fgimg="base\voice_unselect.png" fg_pushedimage="base\voice_select.png" fg_selectimage="base\voice_select.png" size="1080,75" pos="0,0" group="voice_language_select"/>
+					<Radio name="voice_language_english" text="英语" font="6" textcolor="0xFF5F6267" text_rect="0,5,940,0" selecttextcolor="0xFFFF642B" normalimage="base\trans.png" bkimage="base\voice_background.png,1,1,1,0" pushedimage="base\trans.png" fgsize="34,34" fgpos="1018,20"  fgimg="base\voice_unselect.png" fg_pushedimage="base\voice_select.png" fg_selectimage="base\voice_select.png" size="1080,75" pos="0,74" group="voice_language_select"/>
+					<Key  name="voice_select_up_arrow" normalimage="base\trans.png" bkimage="base\voice_select_up.png" pushedimage="base\voice_select_up.png"  fgimg="base\voice_select_up.png" fg_pushedimage="base\voice_select_up.png" fgsize="32,16" size="32,16" pos="128,-15" style="s_py9_key"/>
+				</Tab>
+
+				<Tab name="VoiceKeyboardState" default="voiceinit" size="1080, 238" pos="0,140" >
+					<!-- voice start -->
+					<Layout name="voiceinit" pos="0,0" size="1080, 238">
+						<Key text="点击按钮开始" name="voice_language_start" textcolor="0xFFB9B9B9" font="8" bkimage="base\trans.png" normalimage="base\trans.png" pushedimage="base\trans.png" size="313,32" pos="384,24"/>
+						<Key name="voice_start" bkimage="base\trans.png" normalimage="base\voice_bg.png"  fgsize="36,36" fgpos="17,17"  fgimg="base\voice.png" size="71,71" pos="505,145"   />
+					</Layout>
+
+					<!-- voice speak -->
+					<Layout name="voicespeak" pos="0,0" size="1080, 238">
+						<Key text="请说普通话" name="voice_language_speak" textcolor="0xFFB9B9B9" font="8" bkimage="base\trans.png" normalimage="base\trans.png" pushedimage="base\trans.png" size="313,30" pos="384,5"/>
+						<Voicewave name="volume_wave" size="720, 90" pos="170,45" countshow="54" minHeight="6" waveimg="base\wave.png,2,2,2,2"/>
+						<Key name="voice_stop" text="说完了" bkimage="base\trans.png" normalimage="base\voice_bg.png" font="9" textcolor="0xFFFFFFFF"  size="71,71" pos="505,145"   />
+					</Layout>
+
+					<!-- voice error -->
+					<Layout name="voiceerror" pos="0,0" size="1080, 238">
+						<Key name="voice_error_image" bkimage="base\sogou_error_img_no_network.png" normalimage="base\trans.png" size="157,147" pos="461,0"/>
+						<Key name="voice_error_code" text="网络不给力，请检查网络状况" bkimage="base\trans.png" normalimage="base\trans.png" pushedimage="base\trans.png" textcolor="0xFFB9B9B9" font="7"   size="360,32" pos="360,167"   />
+					</Layout>
+				</Tab>
+			</Layout>
+		</Layout>
+		<!-- voide end -->
+
+		<!-- Symbol -->
+		<Layout name="Keyboard_symbol" pos="0,0" size="1080, 388">
+			<Layout name="" pos="0,1" size="892,316">
+				<ScrollGrid name="SymbolsGrid" pos="0,0" size="892,316"  col="4" row="4" font="0" textcolor="0xFF515151" selecttextcolor="0xFF515151" bkcolor="0xFFFFFFFF" item_hotcolor="0xFFFFFFFF" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF515151" item_bkcolor="0xFFFFFFFF" sep_size="2,25" sep_color="0xFF24364A"  item_pushedcolor="0xFFC7C7C7" grid_expand_mode="last_min" show_gridline="0" line_color="0xFFC7C7C7" line_width="0" bindPageUpBtn="SymbolsGrid_up" bindPageDownBtn="SymbolsGrid_down"/>
+			</Layout>
+			<Layout name="" pos="890,1" size="190,316">
+				<Key name="symbolback" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" disabledimage="base\morecand_bg.png,1,1,1,1" fgimg="base\back.png" fg_pushedimage="base\back_p.png" fgsize="38,30" size="190,79" pos="0,0" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key name="SymbolsGrid_up" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" disabledimage="base\morecand_bg.png,1,1,1,1" fgimg="base\up.png" fg_pushedimage="base\up_p.png" fgsize="20,30" size="190,79" pos="0,79" fg_disabledimage="base\no_up.png"/>
+				<Key name="SymbolsGrid_down" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" disabledimage="base\morecand_bg.png,1,1,1,1" fgimg="base\down.png" fg_pushedimage="base\down_p.png" fgsize="20,30" size="190,79" pos="0,158" fg_disabledimage="base\no_down.png"/>
+				<Key name="symlock" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" disabledimage="base\morecand_bg.png,1,1,1,1" size="190,79" pos="0,237" fgimg="base\lock.png" fg_pushedimage="base\lock_p.png" fgsize="44,33" toggle="1" toggle_fgimg="base\lock_s.png" toggle_fg_pushedimage="base\lock_s_p.png" />
+			</Layout>
+			<Layout name="" pos="0,315" size="1080,72">
+				<TabList name="listscroll_sympages" direct="horizon" size="1080,72" pos="0,0" cell_size="113,72" font="7" textcolor="0xFF515151" selecttextcolor="0xFF515151" select_bkcolor="0xFF515151" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="7" item_textcolor="0xFF515151" item_minwidth="20" enableselected="true" sep_size="1,72" sep_color="0xFFABABAB" support_move="true" item_bkcolor="0xFFDEDEDE" item_normalimage="base\morecand_bg.png,1,1,1,1" item_pushedimage="base\morecand_bg_p.png,1,1,1,1" item_checkedimage="base\morecand_bg_p.png,1,1,1,1" dataSource="Symbols" bindContainer="SymbolsGrid"/>
+			</Layout>
+		</Layout>
+		<!-- Symbol -->
+
+		<!-- Emoji -->
+		<Layout name="Keyboard_emoji" pos="0,81" size="1080, 388">
+			<Layout name="" pos="0,0" size="1113,268">
+				<ScrollGrid name="autogrid_emoji" pos="0,2" size="1113,268" mask="1000,0,1090,51" bkcolor="0xFF172637" col="4" row="4" font="6" textcolor="0xFF90B0CA" item_bkcolor="0xFF172637" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF90B0CA" sep_size="2,25" sep_color="0xFF24364A" item_normalimage="base\trans.png" item_pushedcolor="0x33000000" grid_expand_mode="last_min" show_gridline="1" line_color="0xFF0B3779" line_width="1" />
+			</Layout>
+			<Layout name="" pos="30,270" size="1053,68">
+				<TabList name="listscroll_emojipages" direct="horizon" size="1053,68" pos="30,0" space="40" cell_size="150,68" font="6" textcolor="0xFF90B0CA" select_bkcolor="0xFF0A3071" bkimage="base\more_cands_filtercategory_n.png,5,5,5,5" item_widthAutoFit="false" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF90B0CA" item_minwidth="20" enableselected="true" sep_size="0,0" sep_color="0xFF24364A" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="base\more_cands_filtercategory_n.png" item_pushedimage="base\more_cands_filtercategory_p.png" dataSource="Emojis" bindContainer="autogrid_emoji"/>
+			</Layout>
+		</Layout>
+
+		<!-- MoreCand -->
+		<Layout name="keyboard_moreCand" pos="0,0" size="1080, 388">
+			<Layout name="" pos="0,1" size="889,388">
+				<ScrollGrid name="MoreCandGrid" pos="0,0" size="889,388" maxwidth="880" selecttextcolor="0xFFFF642B" bkcolor="0xFFFFFFFF" col="4" row="4" font="0" item_fgsize="15,15" textcolor="0xFF515151" item_bkcolor="0xFFFFFFFF"  item_hotcolor="0xFFFFFFFF" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF515151" item_correctimg="base\correctmark.png" item_correctselectimg="base\correctmarkh.png" item_cloudimg="base\cloud_correct.png" item_cloudselectimg="base\cloud_correct_h.png" sep_size="2,25" sep_color="0xFF24364A"  item_pushedcolor="0xFFC7C7C7" grid_expand_mode="last_min" show_gridline="1" line_color="0xFFC7C7C7" line_width="1" />
+			</Layout>
+			<Layout name="" pos="889,1" size="191,388">
+				<Key name="moreback" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" fgimg="base\return.png" fg_pushedimage="base\return_p.png" fgsize="36,30" size="191,97" pos="0,0" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="delete" name="moredelete" style="s_function_key" normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" fgimg="base\backspace.png" fg_pushedimage="base\backspace_p.png" fg_disabledimage="base\delete_disable_p.png" fgsize="40,30" size="191,97" pos="0,97"/>
+				<Key name="reset" text="重输" style="s_function_key"  normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" size="191,97" pos="0,194"  fgsize="62,30" />
+				<Key name="all_single_cand" style="s_function_key"   normalimage="base\morecand_bg.png,1,1,1,1" pushedimage="base\morecand_bg_p.png,1,1,1,1" disabledimage="base\morecand_bg.png,1,1,1,1" fgsize="88,50" size="191,97" pos="0,291" fgimg="base\filter_all.png" fg_pushedimage="base\filter_all.png" fg_disabledimage="base\lock_n.png" toggle="1" toggle_fgimg="base\filter_single.png" toggle_fg_pushedimage="base\filter_single.png" text_color="0xFFFFFFFF"/>
+			</Layout>
+		</Layout>
+
+		<LPContainer name="longpress_popup" size="1080,388" pos="0,0"  direct="horizon" longpress_bkimg="base\key_qwerty.png,16,14,16,15"   longpress_bkcolor="0xffffffff" longpress_hotcolor="0xffffffff" longpress_selcolor="0xffffffff" longpress_item_normalimage="base\key_qwerty.png,16,14,16,16" longpress_item_selectimage="base\key_qwerty_active.png,16,15,16,15" longpress_item_width="70" longpress_item_hight="70" containerpadding="10,4,10,5"/>
+	</Tab>
+</Window>

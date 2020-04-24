@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+ <Window name="UpdateWnd" size="320,170" bkimage="wndUpdate\bg.png,11,11,11,11"> 
+	<Font name="微软雅黑" size="12"/> <!-- 0 -->
+	<Font name="微软雅黑" size="14"/> <!-- 1 -->
+	
+	<Control name="logo" bkimage="wndUpdate\logo.png" size="23,23" pos="20,16"/>
+	<Text text="升级提示" size="80,20" pos="37,15" textcolor="0xff222222" font="1"/>
+
+	<Button name="closex"  
+	normalimage="file='wndUpdate\closex.png' source='0,0,30,28'" 
+	hotimage="file='wndUpdate\closex.png' source='30,0,60,28'" 
+	pushedimage="file='wndUpdate\closex.png' source='60,0,90,28'" 
+	size="30,28" pos="280,11" />	
+	
+	<Text name="message" text="正在检查网络连接..." size="300,16" pos="0,70" textcolor="0xff222222" font="1" autofixW="true"/>
+	<Button name="install" text="【安装更新】" size="80,16" pos="0,70" textcolor="0xff0078D7" bkcolor="0xFFFFFFFF" item_pushedcolor="0xFFFFFFFF" font="1" autofixW="true" visible="false"/>
+	
+	<Button name="closedlg" text="退出" textcolor="0xff222222"
+	normalimage="file='wndUpdate\button.png' source='0,0,1,30'" 
+	hotimage="file='wndUpdate\button.png' source='1,0,2,30'" 
+	pushedimage="file='wndUpdate\button.png' source='2,0,3,30'" 
+	size="78,30" pos="216,114" font="0"/>
+	
+</Window>
+
+

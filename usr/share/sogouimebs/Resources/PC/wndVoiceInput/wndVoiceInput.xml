@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="125,156" bkcolor="255,255,255" name="voiceinputWnd">
+	<Font name="微软雅黑" size="18"/> <!-- 0 -->
+	<Font name="微软雅黑" size="14"/> <!-- 1 -->
+	<Font name="微软雅黑" size="12"/> <!-- 2 -->
+	
+	<Button name="background" normalimage="file='wfinput_bar.png'" hotimage="file='input_bar_hover.png'" size="125,156" pos="0,0" />
+	<Button name="buttonClick" normalimage="file='button_input.png'" pushedimage="file='button_input_press.png'" 
+	disabledimage="file='button_input_disable-06.png'" size="74,74" pos="26,33" fgimg="volume_1.png" fgsize="21,35" fgpos="27,13"/>
+	<Button name="switchLanguage" textcolor="0xff525c64" normalimage="file='switch_normal.png'" font="2" text2_color="0xff525c64" hotimage="file='switch_hover.png'" pushedimage="file='switch_press.png'" size="23,23" pos="15,15" />
+	<Button name="Close" normalimage="file='close.png'" hotimage="file='close_hover.png'" pushedimage="file='close_press.png'" size="24,23" pos="92,10"/>
+	
+	<Text text="点击说话" name="info" size="125,15" pos="0,123" font="1"/>
+	
+</Window>

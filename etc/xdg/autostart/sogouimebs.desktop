@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Sogou Pinyin
+Name[zh_CN]=sogouimebs.desktop
+GenericName=Sogou Input Method
+GenericName[zh_CN]=搜狗输入法
+Comment=Sogou Input Method
+Comment[zh_CN]=搜狗输入法
+Keywords=ime;imf;input;
+Exec=/usr/bin/sogouImeService
+Icon=fcitx-sogoupinyin
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=System;Utility;
+StartupNotify=false
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-Autostart-Notify=false
+X-GNOME-Autostart-Delay=2
+X-KDE-autostart-phase=1
+X-KDE-autostart-after=panel
+X-MATE-Autostart-Phase=Applications
+X-MATE-Autostart-Delay=2
+X-MATE-Autostart-Notify=false

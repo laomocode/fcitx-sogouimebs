@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="0,45" bkimage="base\bg_composing_bottom.png,1,10,20,20" enablemove="false" name="compWnd">
+	<Font name="微软雅黑" size="30"/> <!-- 0 -->
+
+	<Text name="compText" size="460,45" maxwidth="460" pos="0,0" textcolor="0xFF90B0CA" min_fontsize="12" max_fontsize="32" marginX="12" autofixW="true" bg_deleteimg="base\delete.png" bg_insertimg="base\insert.png" bg_insteadimg="base\instead.png" bg_exchangeimg="base\exchange.png"/>
+	
+</Window>

@@ -1,0 +1,83 @@
+#!/bin/sh
+# Author: Aron Xu <happyaron@ubuntu.com>
+DIAG_VER=20150105T160000
+
+TIME=`date +%Y%m%dT%H%M%S`
+REPORT_DIR=sogouimebs-diag_${TIME}
+LOG_FILE=${REPORT_DIR}/sogouimebs-diag.log
+REPORT_FCITX=${REPORT_DIR}/fcitx-diagnose.txt
+REPORT_CONF=${REPORT_DIR}/dot_config
+DPKG_INSTALLED=${REPORT_DIR}/dpkg_installed.txt
+
+CONF_DIR_LIST="fcitx sogou-qimpanel SogouPY SogouPY.users"
+CONF_FILE_LIST=".xinputrc"
+
+log_printf()
+{
+        printf "$@" 2>&1 | tee -a $LOG_FILE
+}
+
+rm -rf $REPORT_DIR && mkdir -p $REPORT_DIR
+
+log_printf "sogouimebs-diag version is $DIAG_VER.\n"
+
+if ! `which fcitx 2>&1 1> /dev/null`; then
+        log_printf "Fcitx framework not found. Quit.\n"
+        exit
+else
+        log_printf "Found fcitx framework binary: `which fcitx`\n"
+fi
+
+if ! `which fcitx-diagnose > /dev/null`; then
+        log_printf "fcitx-diagnose NOT FOUND, this should be reported.\n"
+else
+        log_printf "Found fcitx-diagnose binary: `which fcitx-diagnose`\nExecuting..."
+        fcitx-diagnose 2>&1 1>$REPORT_FCITX
+        log_printf "Done.\n"
+fi
+
+if [ -f /etc/X11/Xsession.d/80im-switch ]; then
+	log_printf "Detected im-switch, please purge it and use im-config instead.\n"
+fi
+
+if `which dpkg 2>&1 1>/dev/null`; then
+        log_printf "Finding im-config installation: `dpkg -l im-config`\n"
+        log_printf "Installed fcitx components:\n`dpkg -l | grep fcitx | grep "^i" | awk '{print $2"\t\t"$3}'`\n\n"
+        dpkg -l > $DPKG_INSTALLED
+        log_printf "Installed packages list (deb) collected.\n"
+else
+        log_printf "System type is not Debian based, giving up package info collection.\n"
+fi
+
+log_printf "Running fcitx processes:\n`ps -u $USER -o pid,ppid,state,nice,lstart,pcpu,pmem,cmd | grep fcitx | grep -v grep`\n\n"
+log_printf "Running sogou processes:\n`ps -u $USER -o pid,ppid,state,nice,lstart,pcpu,pmem,cmd | grep sogou | grep -v sogouimebs-diag | grep -v grep`\n\n"
+
+log_printf "Fcitx sockets, locks, and temporary files under /tmp:\n`LANGUAGE=C LC_ALL=C ls -l /tmp/*fcitx*`\n\n"
+log_printf "Qimpanel sockets, locks, and temporary files under /tmp:\n`LANGUAGE=C LC_ALL=C ls -l /tmp/*qimpanel*`\n\n"
+
+PIDFILES=$(ls /tmp/*-qimpanel*.pid 2>/dev/null)
+if [ -z $PIDFILES ]; then
+        log_printf "No PID file for Qimpanel is found.\n\n"
+else
+        for i in $PIDFILES; do
+                log_printf "PID in $i: `cat $i`\n"
+        done
+        log_printf "\n"
+fi
+
+rm -rf $REPORT_CONF && mkdir -p $REPORT_CONF
+log_printf "Collecting configuration files: ${CONF_DIR_LIST}\n"
+[ -z "${CONF_DIR_LIST}" ] || for i in $CONF_DIR_LIST; do
+        if [ -d $HOME/.config/$i ]; then
+                cp -r $HOME/.config/$i $REPORT_CONF/
+        else
+                log_printf "Requested directory $HOME/.config/$i not found, ignoring.\n"
+        fi
+done
+[ -z "${CONF_FILE_LIST}" ] || for i in $CONF_FILE_LIST; do
+	cp -f $HOME/$i $REPORT_CONF/
+done
+
+log_printf "Diagnose info collection completed, compressing.\n"
+tar cJf ${REPORT_DIR}.tar.xz ${REPORT_DIR} && rm -rf ${REPORT_DIR}
+printf "\nSummary:\n Diagnose report is ${REPORT_DIR}.tar.xz, report size is `LANGUAGE=C stat ${REPORT_DIR}.tar.xz | grep Size | awk '{print $2}'` bytes.\n"

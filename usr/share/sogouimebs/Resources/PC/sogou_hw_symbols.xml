@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Symbols>
+    <Category name="中文" column="4" comment="中文标点" lock="true" class="1">
+        <Symbol text="，" />
+        <Symbol text="。" />
+        <Symbol text="？" />
+        <Symbol text="！" />
+    </Category>
+</Symbols>
+

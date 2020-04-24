@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="214,104" minwidth="270" minheight="100" bkimage="skin2.png,40,80,10,10" name="compWnd">
+	<Font name="宋体" size="16"/> <!-- 0 -->
+	<Font name="微软雅黑" size="16"/> <!-- 1 -->
+	
+	<CompString name="CompString" font="1" textcolor="0xffffffff" margin="20,5,20,20"/>
+	<CandString name="CandString" font="0" focus_candString_color="0xffffffff" candString_color="0xff5e2911" margin="2,15,20,20"/>
+	<Control name="separator" bkcolor="0xff893a1a" visible="true" />
+	<caret name="caret" color="0xffff0000" size="1,29" pos="0,0" /> 
+	<Button name="pageup" normalimage="ov_pageup_on1.png" disabledimage="ov_pageup_off1.png" size="15,15" pos="29,3" />
+	<Button name="pagedown" normalimage="ov_pagedown_on1.png" disabledimage="ov_pagedown_off1.png" size="15,15" pos="51,3" />
+</Window>

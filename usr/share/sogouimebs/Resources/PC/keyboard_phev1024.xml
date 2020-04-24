@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window name="keyboard_phev" size="1024,420" bkimage="phev\bg.png,11,11,11,11">
+	<Font name="微软雅黑" size="32"/> <!-- 0 -->
+	<Font name="微软雅黑" size="48"/> <!-- 1 -->
+	<Font name="微软雅黑" size="30"/> <!-- 2 -->
+	<Font name="微软雅黑" size="24"/> <!-- 3 -->
+	<Font name="微软雅黑" size="27"/> <!-- 4 -->
+	<Font name="微软雅黑" size="20"/> <!-- 5 -->
+	
+	<Default name="Key" value="normalimage=&quot;file='phev\key_qwerty.png,23,23,44,44'&quot; pushedimage=&quot;file='phev\key_qwerty_p.png,23,23,44,44'&quot; size=&quot;100,81&quot; font=&quot;2&quot; text_rect=&quot;0,0,0,0&quot; textcolor=&quot;0xFFFFFFFF&quot; text2_font=&quot;3&quot; text2_rect=&quot;22,0,13,14&quot; text2_color=&quot;0xff748999&quot;"/>
+	<Style name="s_toolsBar_key" value="bkimage=&quot;phev\trans.png&quot; size=&quot;60,50&quot; fgsize=&quot;40,40&quot; text_color=&quot;0xFFFFFFFF&quot; normalimage=&quot;phev\trans.png&quot; pushedimage=&quot;phev\trans.png&quot;" />
+	<Style name="s_function_key" value="bkimage=&quot;phev\key_func_qwerty.png,23,23,44,44&quot; pushedimage=&quot;phev\key_func_qwerty_p.png,23,23,44,44&quot; size=&quot;108,81&quot;" />
+	<Style name="s_py9_key" value="bkimage=&quot;phev\key.png,23,23,44,44&quot; pushedimage=&quot;phev\key_p.png,23,23,44,44&quot; size=&quot;96,81&quot; textcolor=&quot;0xFFFFFFFF&quot; font=&quot;3&quot;" />
+	<Style name="s_py9_function_key" value="bkimage=&quot;phev\key_func.png,23,23,44,44&quot; pushedimage=&quot;phev\key_func_p.png,23,23,44,44&quot;" />
+	<Style name="s_editorKeyboard_key" value="normalimage=&quot;phev\trans.png&quot; bkcolor=&quot;0x00000000&quot; hotcolor=&quot;0x00000000&quot; pushedimage=&quot;phev\buttonbg_float_function_pressed.png,5,5,5,5&quot; fgsize=&quot;45,45&quot; textcolor=&quot;0xFF314D7E&quot; font=&quot;2&quot;" />
+	<Style name="s_sym_key" value="bkimage=&quot;phev\more_cands_filtercategory_n.png,5,5,5,5&quot; normalimage=&quot;phev\trans.png&quot; disabledimage=&quot;phev\trans.png&quot; pushedimage=&quot;phev\more_cands_filtercategory_p.png,5,5,5,5&quot; size=&quot;113,85&quot; textcolor=&quot;0xFFFFFFFF&quot;"/>
+	
+	<DataSource name="Symbols" type="gridData" source="res\sogou_symbols.xml" />
+	<DataSource name="Emojis" type="gridData" source="res\emoji.xml" />
+	
+	<!-- ControlBar And CandidatesWnd -->
+	<Tab name="CandsOrToolsBar" default="ToolsBar" size="1024, 420" pos="0,0">
+		<Layout name="ToolsBar" pos="0,0" size="1024,78">
+			<!--Key function="setting" style="s_toolsBar_key" pos="113,13" fgimg="phev\ime_function_multimedia.png" fg_pushedimage="phev\ime_function_multimedia_p.png" fg_disabledimage="phev\ime_function_multimedia_d.png" switch_to="Keyboard_setting"/>
+			<Key function="emoji" style="s_toolsBar_key" pos="343,13" fgimg="phev\ime_function_expression.png" fg_pushedimage="phev\ime_function_expression_p.png" fg_disabledimage="phev\ime_function_expression_d.png" switch_to="Keyboard_emoji"/>-->
+			<Key function="switch" style="s_toolsBar_key" pos="153,13" fgimg="phev\ime_function_switch.png" fg_pushedimage="phev\ime_function_switch_p.png" fg_disabledimage="phev\ime_function_switch_d.png" switch_to="Keyboard_py26"/>
+			<!--Key function="edit" style="s_toolsBar_key" pos="803,13" fgimg="phev\ime_function_edit.png" fg_pushedimage="phev\ime_function_edit_p.png" fg_disabledimage="phev\ime_function_edit_d.png" switch_to="Keyboard_editor"/>-->
+			<Key function="handinput" style="s_toolsBar_key" pos="370,13" size="75,65" fgsize="75,65" fgimg="phev\handinput.png" fg_pushedimage="phev\handinput_p.png" fg_disabledimage="phev\handinput_p.png" switch_to="Keyboard_handInput"/>
+			<Control bkimage="phev\splitLine.png" size="2,50" pos="900,18" />
+			<Key function="hide" style="s_toolsBar_key" pos="920,13" fgimg="phev\close.png" fg_pushedimage="phev\close_p.png" />
+		</Layout>
+		<Layout name="CandidateWnd" pos="0,0" size="1024,78" >
+			<List name="Candidates" pos="10,25" size="880,78" direct="horizon" cell_size="80,50" bkimage="phev\trans.png" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF90B0CA" sep_size="0,0" sep_color="0x00000000" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="file='phev\trans.png,23,23,44,44'" item_pushedimage="file='phev\key_qwerty_p.png,23,23,44,44'"/>
+			<Key bkimage="phev\splitLine.png" size="2,50" pos="900,18" style="s_toolsBar_key" />
+			<!--Key function="MoreCandidates" style="s_toolsBar_key" bkimage="phev\more.png" pushedimage="phev\more.png" size="33,33" pos="1003,21" switch_to="keyboard_moreCand" />-->
+		</Layout>
+	</Tab>
+	<!-- Keyboard Layout -->
+	<Tab name="Keyboards" default="Keyboard_handInput" size="1024, 420" pos="0,88">
+		<!-- PinYin26 Keyboard -->
+		<Layout name="Keyboard_py26" size="1024, 420" pos="0,0">
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1024, 81">
+				<Key text="q" unicode_ascii="q" pos="12,0"/>
+				<Key text="w" unicode_ascii="w" pos="112,0"/>
+				<Key text="e" unicode_ascii="e" pos="212,0"/>
+				<Key text="r" unicode_ascii="r" pos="312,0"/>
+				<Key text="t" unicode_ascii="t" pos="412,0"/>
+				<Key text="y" unicode_ascii="y" pos="512,0"/>
+				<Key text="u" unicode_ascii="u" pos="612,0"/>
+				<Key text="i" unicode_ascii="i" pos="712,0"/>
+				<Key text="o" unicode_ascii="o" pos="812,0"/>
+				<Key text="p" unicode_ascii="p" pos="912,0"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,81" size="1024,81">
+				<Key text="a" unicode_ascii="a" pos="62,0" />
+				<Key text="s" unicode_ascii="s" pos="162,0" />
+				<Key text="d" unicode_ascii="d" pos="262,0" />
+				<Key text="f" unicode_ascii="f" pos="362,0" />
+				<Key text="g" unicode_ascii="g" pos="462,0" />
+				<Key text="h" unicode_ascii="h" pos="562,0" />
+				<Key text="j" unicode_ascii="j" pos="662,0" />
+				<Key text="k" unicode_ascii="k" pos="762,0" />
+				<Key text="l" unicode_ascii="l" pos="862,0" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,162" size="1024,81">
+				<Key text="分词" name="'" unicode_ascii="'" size="150,81" pos="12,0" />
+				<Key text="z" unicode_ascii="z"  pos="162,0" />
+				<Key text="x" unicode_ascii="x"  pos="262,0" />
+				<Key text="c" unicode_ascii="c"  pos="362,0" />
+				<Key text="v" unicode_ascii="v"  pos="462,0" />
+				<Key text="b" unicode_ascii="b"  pos="562,0" />
+				<Key text="n" unicode_ascii="n"  pos="662,0" />
+				<Key text="m" unicode_ascii="m"  pos="762,0" />
+				<Key function="delete" size="150,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="36,25" pos="862,0" longpress="1" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,243" size="1024,81">
+				<!--Key text="符" name="symbol" style="s_function_key" size="162,81" pos="18,0" switch_to="Keyboard_symbol"/>
+				<Key text="123" name="123" style="s_function_key" size="162,81" pos="180,0" switch_to="Keyboard_number"/>
+				<Key direct_output="true" text="，" output="，" unicode="0xFF0C"  pos="342,0" />
+				<Key direct_output="true" text="。" output="。" unicode="0x3002"  pos="450,0" />
+				<Key function="space"  fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="558,0" />
+				<Key direct_output="true" text="@" output="@"  pos="666,0" />
+				<Key direct_output="true" text="；" output="；" unicode="0xFF1B" pos="774,0" />
+				<Key function="ch_en" size="108,81" pos="882,0" fgimg="phev\input_ch.png" fg_pushedimage="phev\input_ch.png" fgsize="72,72" switch_to="Keyboard_en26"/>
+				<Key function="enter" size="108,81" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" pos="990,0" enter_pys="1"/>-->
+				<Key text="123" name="123" style="s_function_key" size="150,81" pos="12,0" switch_to="Keyboard_number"/>
+				<Key direct_output="true" text="，" output="，" unicode="0xFF0C"  pos="162,0" />
+				<Key direct_output="true" text="。" output="。" unicode="0x3002"  pos="262,0" />
+				<Key function="space"  fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" size="150,81" pos="362,0" />
+				<Key direct_output="true" text="@" output="@"  pos="512,0" />
+				<Key direct_output="true" text="；" output="；" unicode="0xFF1B" pos="612,0" />
+				<Key function="ch_en" size="150,81" pos="712,0" fgimg="phev\input_ch.png" fg_pushedimage="phev\input_ch.png" fgsize="72,72" switch_to="Keyboard_en26"/>
+				<Key function="enter" size="150,81" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" pos="862,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+		<!-- English26 Keyboard   shiftA="0" -->
+		<Layout name="Keyboard_en26" size="1024, 420" pos="0,0" >
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1024, 81">
+				<Key text="q" unicode_ascii="q" pos="12,0"/>
+				<Key text="w" unicode_ascii="w" pos="112,0"/>
+				<Key text="e" unicode_ascii="e" pos="212,0"/>
+				<Key text="r" unicode_ascii="r" pos="312,0"/>
+				<Key text="t" unicode_ascii="t" pos="412,0"/>
+				<Key text="y" unicode_ascii="y" pos="512,0"/>
+				<Key text="u" unicode_ascii="u" pos="612,0"/>
+				<Key text="i" unicode_ascii="i" pos="712,0"/>
+				<Key text="o" unicode_ascii="o" pos="812,0"/>
+				<Key text="p" unicode_ascii="p" pos="912,0"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,81" size="1024,81">
+				<Key text="a" unicode_ascii="a"  pos="62,0" />
+				<Key text="s" unicode_ascii="s"  pos="162,0" />
+				<Key text="d" unicode_ascii="d"  pos="262,0" />
+				<Key text="f" unicode_ascii="f"  pos="362,0" />
+				<Key text="g" unicode_ascii="g"  pos="462,0" />
+				<Key text="h" unicode_ascii="h"  pos="562,0" />
+				<Key text="j" unicode_ascii="j"  pos="662,0" />
+				<Key text="k" unicode_ascii="k"  pos="762,0" />
+				<Key text="l" unicode_ascii="l"  pos="862,0" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,162" size="1024,81">
+				<Key function="shift" size="150,81" fgimg="phev\shift.png" fg_pushedimage="phev\shift_p.png" fgsize="24,36" pos="12,0" switch_to="Keyboard_en26_UP"/>
+				<Key text="z" unicode_ascii="z" pos="162,0" />
+				<Key text="x" unicode_ascii="x" pos="262,0" />
+				<Key text="c" unicode_ascii="c" pos="362,0" />
+				<Key text="v" unicode_ascii="v" pos="462,0" />
+				<Key text="b" unicode_ascii="b" pos="562,0" />
+				<Key text="n" unicode_ascii="n" pos="662,0" />
+				<Key text="m" unicode_ascii="m" pos="762,0" />
+				<Key function="delete" size="150,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="36,25" pos="862,0" longpress="1" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,243" size="1024,81">
+				<!--Key text="符" name="symbol" style="s_function_key" pos="18,0" switch_to="Keyboard_symbol"/>
+				<Key text="123" name="123" style="s_function_key" pos="126,0" switch_to="Keyboard_number"/>
+				<Key function="dictionary" name="dictionary" style="s_function_key" fgimg="phev\predict.png" fg_pushedimage="phev\predict_p.png" fgsize="30,33" pos="234,0" toggle="1" toggle_fgimg="phev\predict_s.png" toggle_fg_pushedimage="phev\predict_s_p.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0xFE50" pos="342,0" />
+				<Key direct_output="true" text="." name="." output="." unicode="0xFE52" pos="450,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="558,0" />
+				<Key direct_output="true" text="@" name="@" output="@" unicode="0xFE6B" pos="666,0" />
+				<Key direct_output="true" text=";" name=";" output=";" unicode="0xFE54" pos="774,0" />
+				<Key function="ch_en" style="s_function_key" pos="882,0" fgimg="phev\input_en.png" fg_pushedimage="phev\input_en.png" fgsize="72,72" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" pos="990,0" enter_pys="1"/>-->
+				<Key text="123" name="123" style="s_function_key" size="125,81" pos="12,0" switch_to="Keyboard_number"/>
+				<Key function="dictionary" name="dictionary" style="s_function_key" fgimg="phev\predict.png" fg_pushedimage="phev\predict_p.png" fgsize="30,33" size="125,81" pos="137,0" toggle="1" toggle_fgimg="phev\predict_s.png" toggle_fg_pushedimage="phev\predict_s_p.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0xFE50" pos="262,0" />
+				<Key direct_output="true" text="." name="." output="." unicode="0xFE52" pos="362,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="462,0" />
+				<Key direct_output="true" text="@" name="@" output="@" unicode="0xFE6B" pos="562,0" />
+				<Key direct_output="true" text=";" name=";" output=";" unicode="0xFE54" pos="662,0" />
+				<Key function="ch_en" style="s_function_key" size="125,81" pos="762,0" fgimg="phev\input_en.png" fg_pushedimage="phev\input_en.png" fgsize="72,72" switch_to="Keyboard_py26"/>
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" size="125,81" pos="887,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<Layout name="Keyboard_en26_UP" size="1024, 420" pos="0,0" >
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1024, 81">
+				<Key text="Q" unicode_ascii="Q" pos="12,0"/>
+				<Key text="W" unicode_ascii="W" pos="112,0"/>
+				<Key text="E" unicode_ascii="E" pos="212,0"/>
+				<Key text="R" unicode_ascii="R" pos="312,0"/>
+				<Key text="T" unicode_ascii="T" pos="412,0"/>
+				<Key text="Y" unicode_ascii="Y" pos="512,0"/>
+				<Key text="U" unicode_ascii="U" pos="612,0"/>
+				<Key text="I" unicode_ascii="I" pos="712,0"/>
+				<Key text="O" unicode_ascii="O" pos="812,0"/>
+				<Key text="P" unicode_ascii="P" pos="912,0"/>
+			</Layout>
+			<!-- Second keyboard line -->
+			<Layout name="" pos="0,81" size="1024,81">
+				<Key text="A" unicode_ascii="A"  pos="62,0" />
+				<Key text="S" unicode_ascii="S"  pos="162,0" />
+				<Key text="D" unicode_ascii="D"  pos="262,0" />
+				<Key text="F" unicode_ascii="F"  pos="362,0" />
+				<Key text="G" unicode_ascii="G"  pos="462,0" />
+				<Key text="H" unicode_ascii="H"  pos="562,0" />
+				<Key text="J" unicode_ascii="J"  pos="662,0" />
+				<Key text="K" unicode_ascii="K"  pos="762,0" />
+				<Key text="L" unicode_ascii="L"  pos="862,0" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,162" size="1024,81">
+				<Key function="shift" size="150,81" fgimg="phev\shift_down.png" fg_pushedimage="phev\shift_down_p.png" fgsize="24,36" pos="12,0" switch_to="Keyboard_en26"/>
+				<Key text="Z" unicode_ascii="Z" pos="162,0" />
+				<Key text="X" unicode_ascii="X" pos="262,0" />
+				<Key text="C" unicode_ascii="C" pos="362,0" />
+				<Key text="V" unicode_ascii="V" pos="462,0" />
+				<Key text="B" unicode_ascii="B" pos="562,0" />
+				<Key text="N" unicode_ascii="N" pos="662,0" />
+				<Key text="M" unicode_ascii="M" pos="762,0" />
+				<Key function="delete" size="150,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="36,25" pos="862,0" longpress="1" />
+			</Layout>
+			<!--  -->
+			<Layout name="" pos="0,243" size="1024,81">
+				<!--Key text="符" name="symbol" style="s_function_key" pos="18,0" switch_to="Keyboard_symbol"/>
+				<Key text="123" name="123" style="s_function_key" pos="126,0" switch_to="Keyboard_number"/>
+				<Key function="dictionary" name="dictionary_up" style="s_function_key" fgimg="phev\predict.png" fg_pushedimage="phev\predict_p.png" fgsize="30,33" pos="234,0" toggle="1" toggle_fgimg="phev\predict_s.png" toggle_fg_pushedimage="phev\predict_s_p.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0xFE50" pos="342,0" />
+				<Key direct_output="true" text="." name="." output="." unicode="0xFE52" pos="450,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="558,0" />
+				<Key direct_output="true" text="@" name="@" output="@" unicode="0xFE6B" pos="666,0" />
+				<Key direct_output="true" text=";" name=";" output=";" unicode="0xFE54" pos="774,0" />
+				<Key function="ch_en" style="s_function_key" pos="882,0" fgimg="phev\input_en.png" fg_pushedimage="phev\input_en.png" fgsize="72,72" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" pos="990,0" enter_pys="1"/>-->
+				<Key text="123" name="123" style="s_function_key" size="125,81" pos="12,0" switch_to="Keyboard_number"/>
+				<Key function="dictionary" name="dictionary_up" style="s_function_key" fgimg="phev\predict.png" fg_pushedimage="phev\predict_p.png" fgsize="30,33" size="125,81" pos="137,0" toggle="1" toggle_fgimg="phev\predict_s.png" toggle_fg_pushedimage="phev\predict_s_p.png"/>
+				<Key direct_output="true" text="," name="," output="," unicode="0xFE50" pos="262,0" />
+				<Key direct_output="true" text="." name="." output="." unicode="0xFE52" pos="362,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="462,0" />
+				<Key direct_output="true" text="@" name="@" output="@" unicode="0xFE6B" pos="562,0" />
+				<Key direct_output="true" text=";" name=";" output=";" unicode="0xFE54" pos="662,0" />
+				<Key function="ch_en" style="s_function_key" size="125,81" pos="762,0" fgimg="phev\input_en.png" fg_pushedimage="phev\input_en.png" fgsize="72,72" switch_to="Keyboard_py26"/>
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" size="125,81" pos="887,0" enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<!-- PinYin9 Keyboard -->
+		<Layout name="Keyboard_py9" size="1024, 420" pos="0,0">
+			<!-- First line -->
+			<Layout name="" pos="0,0" size="1024, 81">
+				<list type="sym" name="symlist" direct="vertical" size="96,324" pos="18,0" clip="10,10,10,20" size_cell="96,81" bkimage="phev\usersym.png,23,23,44,44" font="4" font_py="5" textcolor="0xFFFFFFFF" text_down_color="0xFFFFFFFF" text_down_bkcolor="0xff5d7aa3" text_bkcolor="0x00000000" sep_color="0xFF23395c" sep_dist="18" text="，|。|？|！|…|：|；|.|-|@" />
+			</Layout>
+			<Layout name="" pos="0,0" size="1024, 81">
+				<Key text="1" unicode_ascii="1" style="s_py9_key" pos="122,0" longpress="1" longpress_mode="2" longpress_text="1" />
+				<Key text="ABC" unicode_ascii="2" style="s_py9_key" pos="227,0" longpress="1" longpress_mode="2" longpress_text="2,A,B,C" />
+				<Key text="DEF" unicode_ascii="3" style="s_py9_key" pos="332,0" longpress="1" longpress_mode="2" longpress_text="D,E,F,3" longpress_defpos="3"/>
+				<Key function="delete" style="s_py9_function_key" size="110,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="36,25" pos="437,0" />
+				<Key direct_output="true" text="1" output="1" style="s_py9_key" pos="562,0" font="2"/>
+				<Key direct_output="true" text="2" output="2" style="s_py9_key" pos="667,0" font="2"/>
+				<Key direct_output="true" text="3" output="3" style="s_py9_key" pos="772,0" font="4"/>
+				<Key direct_output="true" text="?" output="?" style="s_py9_key" pos="897,0" font="4"/>
+				<Key direct_output="true" text="/" output="/" style="s_py9_key" pos="1002,0" font="4"/>
+			</Layout>
+			<Layout name="" pos="0,81" size="1024, 81">
+				<Key text="GHI" unicode_ascii="4" style="s_py9_key" pos="122,0" longpress="1" longpress_mode="2" longpress_text="4,G,H,I"/>
+				<Key text="JKL" unicode_ascii="5" style="s_py9_key" pos="227,0" longpress="1" longpress_mode="2" longpress_text="5,J,K,L"/>
+				<Key text="MNO" unicode_ascii="6" style="s_py9_key" pos="332,0" longpress="1" longpress_mode="2" longpress_text="M,N,O,6" longpress_defpos="3"/>
+				<Key function="reset" text="重输" style="s_py9_function_key" size="110,81" pos="437,0"  />
+				<Key direct_output="true" text="4" output="4" style="s_py9_key" pos="562,0" font="2"/>
+				<Key direct_output="true" text="5" output="5" style="s_py9_key" pos="667,0" font="2"/>
+				<Key direct_output="true" text="6" output="6" style="s_py9_key" pos="772,0" font="2"/>
+				<Key direct_output="true" text="@" output="@" style="s_py9_key" pos="897,0" font="4"/>
+				<Key direct_output="true" text=")" output=")" style="s_py9_key" pos="1002,0" font="4"/>
+			</Layout>
+			<Layout name="" pos="0,162" size="1024, 81">
+				<Key text="PQRS" unicode_ascii="7" style="s_py9_key" pos="122,0" longpress="1" longpress_mode="2" longpress_text="7,P,Q,R,S"/>
+				<Key text="TUV" unicode_ascii="8" style="s_py9_key" pos="227,0" longpress="1" longpress_mode="2" longpress_text="8,T,U,V"/>
+				<Key text="WXYZ" unicode_ascii="9" style="s_py9_key" pos="332,0" longpress="1" longpress_mode="2" longpress_text="W,X,Y,Z,9" longpress_defpos="4"/>
+				<Key text="0" unicode_ascii="0" style="s_py9_function_key" size="110,81" pos="437,0"   longpress="1" longpress_mode="2" longpress_text="0"/>
+				<Key direct_output="true" text="7" output="7" style="s_py9_key" pos="562,0" font="2"/>
+				<Key direct_output="true" text="8" output="8" style="s_py9_key" pos="667,0" font="2"/>
+				<Key direct_output="true" text="9" output="9" style="s_py9_key" pos="772,0" font="2"/>
+				<Key direct_output="true" text="√" output="√" style="s_py9_key" pos="897,0" font="4"/>
+				<Key direct_output="true" text="×" output="×" style="s_py9_key" pos="1002,0" font="4"/>
+			</Layout>
+			<Layout name="" pos="0,243" size="1024, 81">
+				<Key function="space" style="s_py9_key" size="201,81" pos="122,0" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" />
+				<Key function="ch_en" style="s_py9_function_key" size="96,81" pos="332,0" fgimg="phev\input_ch.png" fg_pushedimage="phev\input_ch.png" fgsize="72,72"   switch_to="Keyboard_en26"/>
+				<Key function="enter" style="s_py9_function_key" size="110,81" pos="437,0" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" enter_pys="1" font="3"/>
+				<Key direct_output="true" text="*" output="*" style="s_py9_key" pos="562,0" font="2"/>
+				<Key direct_output="true" text="0" output="0" style="s_py9_key" pos="667,0" font="2"/>
+				<Key direct_output="true" text="#" output="#" style="s_py9_key" pos="772,0" font="2"/>
+				<Key direct_output="true" text="-" output="-" style="s_py9_key" pos="897,0" font="4"/>
+				<!--Key text="符" name="symbol" size="96,81" pos="1002,0" font="4" switch_to="Keyboard_symbol" />-->
+				<Key direct_output="true" text="。" output="。" style="s_py9_key" pos="1002,0" font="4"/>
+			</Layout>
+		</Layout>
+		<!-- Handinput Keyboard -->
+		<Layout name="Keyboard_handInput" pos="0,0" size="1024, 350">
+			<Layout name="Left" pos="0,0" size="220,350">
+				<Key direct_output="true" text="，" output="，" pos="12,0" />
+				<Key direct_output="true" text="。" output="。" pos="112,0" />
+				<Key direct_output="true" text="！" output="！" pos="12,81" />
+				<Key direct_output="true" text="......" output="......" style="s_function_key" pos="112,81" text_color="0xFFFFFFFF"/>
+				<Key direct_output="true" text="？" output="？" pos="12,162" />
+				<Key direct_output="true" text="：" output="：" pos="112,162" />
+				<!--Key text="符" name="symbol" style="s_function_key" pos="18,243" switch_to="Keyboard_symbol"/>-->
+				<Key direct_output="true" text="@" output="@" pos="12,243" />
+				<Key text="123" name="123" style="s_function_key" pos="112,243" switch_to="Keyboard_number"/>
+			</Layout>
+			
+				<Handinput type="0" pos="224,0" size="640,324" bkimage="phev\bg_hw.png,19,19,19,19" inkcolor="0xFFFF0000" mode="0" line_width="2" line_color="0xFFFF0000" auto_time="200" />
+		
+			<Layout name="Right" pos="875,0" size="1024,350">
+				<Key function="delete" style="s_function_key" size="137,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="46,25" pos="0,0" />
+				<!--Key function="full_half_hw" style="s_function_key" size="219,81" pos="0,81" fgimg="phev\hw_half.png" fg_pushedimage="phev\hw_half.png" fgsize="98,34" switch_to="keyboard_fullscreen_handinput" />-->
+				<Key function="space" size="137,81" fgimg="phev\space_hw.png" fg_pushedimage="phev\space_hw.png" fgsize="46,35" pos="0,81" />
+				<Key function="ch_en" style="s_function_key" size="137,81" pos="0,162" fgimg="phev\input_ch.png" fg_pushedimage="phev\input_ch.png" fgsize="98,72" switch_to="Keyboard_en26" />
+				<!--Key function="ch_en" style="s_function_key" size="100,81" pos="0,243" fgimg="phev\input_ch.png" fg_pushedimage="phev\input_ch.png" fgsize="72,72" switch_to="Keyboard_en26" />-->
+				<Key function="enter" style="s_function_key" size="137,81" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="46,35" pos="0,243" />
+			</Layout>
+		</Layout>
+		<!-- Edit Keyboard -->
+		<Layout name="Keyboard_editor" pos="0,0" size="1024,420">
+			<Layout name="FirstLine" pos="0,0" size="1024, 200">
+				<Key function="edit_select_all" size="180,82" pos="91,53" fgimg="phev\edit_select_all.png" fg_pushedimage="phev\edit_select_all.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="全选" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_cut" size="180,82" pos="300,53" fgimg="phev\edit_cut.png" fg_pushedimage="phev\edit_cut.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="剪切" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_copy" size="180,82" pos="509,53" fgimg="phev\edit_copy.png" fg_pushedimage="phev\edit_copy.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="复制" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_paste" size="180,82" pos="718,53" fgimg="phev\edit_paste.png" fg_pushedimage="phev\edit_paste.png" style="s_editorKeyboard_key" fgsize="54,42" fgpos="20,20" text="粘贴" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_delete" size="72,72" pos="938,60" fgimg="phev\edit_delete.png" fg_pushedimage="phev\edit_delete.png" style="s_editorKeyboard_key" fgsize="54,42" />
+			</Layout>
+			<Layout name="SecondLine" pos="0,183" size="1024, 200">
+				<Key function="edit_unselect" fgimg="phev\edit_select.png" fg_pushedimage="phev\edit_select.png" size="180,82" pos="91,-6" select="0" select_bkcolor="0x00000000" select_fgimg="phev\edit_select_s.png" style="s_editorKeyboard_key" fgsize="54,45" fgpos="20,20" text="选择" text_rect="50,0,0,0" text_select_color="0xFF074EC8"/>
+				<Key function="edit_left" fgimg="phev\ime_function_edit_left.png" fg_pushedimage="phev\ime_function_edit_left.png" size="72,72" pos="309,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="phev\ime_function_edit_left_s.png" style="s_editorKeyboard_key"/>
+				<Key function="edit_right" fgimg="phev\ime_function_edit_right.png" fg_pushedimage="phev\ime_function_edit_right.png" size="72,72" pos="518,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="phev\ime_function_edit_right_s.png" style="s_editorKeyboard_key" />
+				<Key function="edit_down" fgimg="phev\ime_function_edit_down.png" fg_pushedimage="phev\ime_function_edit_down.png"  size="72,72" pos="727,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="phev\ime_function_edit_down_s.png" style="s_editorKeyboard_key" />
+				<Key function="edit_up" fgimg="phev\ime_function_edit_up.png" fg_pushedimage="phev\ime_function_edit_up.png" size="72,72" pos="936,0" text_color="0xFF555555" select="0" select_bkcolor="0x00000000" select_fgimg="phev\ime_function_edit_up_s.png" style="s_editorKeyboard_key" />
+			</Layout>
+		</Layout>
+		<!-- switch Keyboard -->
+		<Layout name="Keyboard_switch" pos="0,0" size="1024,420">
+			<Key size="168,198" pos="252,43" style="s_editorKeyboard_key" fgsize="105,90" fgpos="31,24" fgimg="phev\ic_guide_pin26.png" select="1" fg_pushedimage="phev\ic_guide_pin26_p.png" select_bkcolor="0x00000000" select_fgimg="phev\ic_guide_pin26_p.png" text="拼音全键" text_rect="0,114,0,0" textcolor="0xFF314E7D" text_select_color="0xFF074EC8" font="2" switch_to="Keyboard_py26" />
+			<!--Key size="168,198" pos="505,43" style="s_editorKeyboard_key" fgsize="105,90" fgpos="31,24" fgimg="phev\ic_guide_handwriting.png" fg_pushedimage="phev\ic_guide_handwriting.png" select_bkcolor="0x00000000" select_fgimg="phev\ic_guide_handwriting_p.png" text="手写" text_rect="0,114,0,0" textcolor="0xFF314E7D" text_select_color="0xFF074EC8" font="2" switch_to="Keyboard_handInput" />-->
+			<Key size="168,198" pos="656,43" style="s_editorKeyboard_key" fgsize="105,90" fgpos="31,24" fgimg="phev\ic_guide_pin9.png" fg_pushedimage="phev\ic_guide_pin9.png" select_bkcolor="0x00000000" select_fgimg="phev\ic_guide_pin9_p.png" text="拼音九键" text_rect="0,114,0,0" textcolor="0xFF314E7D" text_select_color="0xFF074EC8" font="2" switch_to="Keyboard_py9" />
+		</Layout>
+
+		<!-- Keyboard number-->
+		<Layout name="Keyboard_number" pos="0,0" size="1024,420">
+			<!-- First keyboard line -->
+			<Layout name="FirstKeyboardLine" pos="0,0" size="1024, 81">
+				<Key direct_output="true" text="1" output="1" pos="12,0" />
+				<Key direct_output="true" text="2" output="2" pos="112,0" />
+				<Key direct_output="true" text="3" output="3" pos="212,0" />
+				<Key direct_output="true" text="4" output="4" pos="312,0" />
+				<Key direct_output="true" text="5" output="5" pos="412,0" />
+				<Key direct_output="true" text="6" output="6" pos="512,0" />
+				<Key direct_output="true" text="7" output="7" pos="612,0" />
+				<Key direct_output="true" text="8" output="8" pos="712,0" />
+				<Key direct_output="true" text="9" output="9" pos="812,0" />
+				<Key direct_output="true" text="0" output="0" pos="912,0" />
+			</Layout>
+			<Layout name="" pos="0,81" size="1024,81">
+				<Key direct_output="true" text="~" output="~" pos="62,0" />
+				<Key direct_output="true" text="@" output="@" pos="162,0" />
+				<Key direct_output="true" text="#" output="#" pos="262,0" />
+				<Key direct_output="true" text="*" output="*" pos="362,0" />
+				<Key direct_output="true" text="（" output="（" pos="462,0" />
+				<Key direct_output="true" text="）" output="）" pos="562,0" />
+				<Key direct_output="true" text="=" output="=" pos="662,0" />
+				<Key direct_output="true" text="？" output="？" pos="762,0" />
+				<Key direct_output="true" text="_" output="_" pos="862,0" />
+			</Layout>
+			<Layout name="" pos="0,162" size="1024,81">
+				<Key direct_output="true" text="%" output="%" pos="12,0" />
+				<Key direct_output="true" text="：" output="：" pos="112,0" />
+				<Key direct_output="true" text="；" output="；" pos="212,0" />
+				<Key direct_output="true" text="&amp;" output="&amp;" pos="312,0" />
+				<Key direct_output="true" text="，" output="，" pos="412,0" />
+				<Key direct_output="true" text="。" output="。" pos="512,0" />
+				<Key direct_output="true" text="！" output="！" pos="612,0" />
+				<Key direct_output="true" text="、" output="、" pos="712,0" />
+				<Key function="delete" size="200,81" fgimg="phev\backspace.png" fg_pushedimage="phev\backspace_p.png" fgsize="36,25" pos="812,0" longpress="1" />
+			</Layout>
+			<Layout name="" pos="0,243" size="1024,81">
+				<!--Key text="符" name="symbol" style="s_function_key" pos="18,0" size="162,81" switch_to="Keyboard_symbol" remeber_last_keyboard="1"/>
+				<Key text="back" name="back" style="s_function_key" pos="180,0" size="162,81" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key direct_output="true" text="." name="." output="."  pos="342,0" />
+				<Key direct_output="true" text="/" name="/" output="."  pos="450,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="558,0" size="162,81"/>
+				<Key direct_output="true" text="+" name="+" output="+"  pos="720,0" />
+				<Key direct_output="true" text="-" name="-" output="-"  pos="828,0" />
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" pos="936,0" size="162,81" enter_pys="1"/>-->
+				<Key text="back" name="back" style="s_function_key" pos="12,0" size="150,81" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key direct_output="true" text="." name="." output="."  pos="162,0" />
+				<Key direct_output="true" text="/" name="/" output="/"  pos="262,0" />
+				<Key direct_output="true" text="\" name="\" output="\"  pos="362,0" />
+				<Key function="space" fgimg="phev\space.png" fg_pushedimage="phev\space_p.png" fgsize="36,35" pos="462,0" size="150,81"/>
+				<Key direct_output="true" text="+" name="+" output="+"  pos="612,0" />
+				<Key direct_output="true" text="-" name="-" output="-"  pos="712,0" />
+				<Key function="enter" style="s_function_key" fgimg="phev\enter.png" fg_pushedimage="phev\enter_p.png" fgsize="36,22" size="200,81" pos="812,0"  enter_pys="1"/>
+			</Layout>
+		</Layout>
+
+		<!-- Symbol -->
+		<Layout name="Keyboard_symbol" pos="0,-88" size="1024,420">
+			<Layout name="" pos="0,0" size="1000,340">
+				<ScrollGrid name="SymbolsGrid" pos="0,0" size="1000,340" bkcolor="0xFF172637" col="4" row="4" font="2" textcolor="0xFF90B0CA" item_bkcolor="0xFF172637" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF90B0CA" sep_size="2,25" sep_color="0xFF24364A" item_normalimage="phev\trans.png" item_pushedcolor="0x33000000" grid_expand_mode="last_min" show_gridline="1" line_color="0xFF0B3779" line_width="1" bindPageUpBtn="SymbolsGrid_up" bindPageDownBtn="SymbolsGrid_down" />
+			</Layout>
+			<Layout name="" pos="1000,0" size="113,420">
+				<Key name="back" style="s_sym_key" fgimg="phev\back.png" fg_pushedimage="phev\back_p.png" fgsize="36,28" pos="0,0" switch_to="Keyboard_py26" remeber_last_keyboard="1"/>
+				<Key name="SymbolsGrid_up" style="s_sym_key" fgimg="phev\up.png" fg_pushedimage="phev\up_p.png" fgsize="24,29" pos="0,85" fg_disabledimage="phev\no_up.png"/>
+				<Key name="SymbolsGrid_down" style="s_sym_key" fgimg="phev\down.png" fg_pushedimage="phev\down_p.png" fgsize="24,29" pos="0,170" fg_disabledimage="phev\no_down.png"/>
+				<Key name="lock" style="s_sym_key" pos="0,255" fgimg="phev\lock.png" fg_pushedimage="phev\lock_p.png" fgsize="38,29" toggle="1" toggle_fgimg="phev\lock_s.png" toggle_fg_pushedimage="phev\lock_s_p.png" />
+			</Layout>
+			<Layout name="" pos="0,0" size="655,420">
+				<TabList name="listscroll_sympages" direct="horizon" size="1112,80" pos="0,340" grid_count="6" cell_size="200,80" font="4" text_color="0xFF90B0CA" select_bkcolor="0xFF0A3071" bkimage="phev\more_cands_filtercategory_n.png,5,5,5,5" item_widthAutoFit="true" item_heightAutoFit="false" item_textfont="0" item_textcolor="0xFF90B0CA" sep_size="2,25" sep_color="0xFF24364A" support_move="true" item_bkcolor="0xFF24364A" item_normalimage="phev\more_cands_filtercategory_n.png" item_pushedimage="phev\more_cands_filtercategory_p.png" dataSource="Symbols" bindContainer="SymbolsGrid"/>
+			</Layout>
+		</Layout>
+	</Tab>
+</Window>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Symbols>
+    <Category name="常用" column="4" comment="中文标点" lock="true" class="1">
+        <Symbol text="%" />
+        <Symbol text="/" />
+        <Symbol text="-" />
+        <Symbol text="+" />
+        <Symbol text="*" />
+        <Symbol text=":" />
+        <Symbol text="#" />
+        <Symbol text="_" />
+    </Category>
+</Symbols>
+

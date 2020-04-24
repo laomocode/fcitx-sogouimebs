@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+ <Window name="UpdateBubbleWnd" size="184,70" bkimage="wndUpdateBubble\bg.png,11,11,11,11"> 
+	<Font name="微软雅黑" size="12"/> <!-- 0 -->
+	
+	<Button name="closex"  
+	normalimage="file='wndUpdateBubble\closex.png' source='0,0,30,28'" 
+	hotimage="file='wndUpdateBubble\closex.png' source='30,0,60,28'" 
+	pushedimage="file='wndUpdateBubble\closex.png' source='60,0,90,28'" 
+	size="25,23" pos="149,10" />	
+	
+	<Text text="检测到输入法有更新，" size="120,16" pos="32,17" textcolor="0xff222222" font="0"/>	
+	<Text text="请点击" size="300,16" pos="32,36" textcolor="0xff222222" font="0" autofixW="true"/>
+	<Button name="install" text="【安装更新】" size="60,16" pos="72,35" textcolor="0xff0078D7" bkcolor="0xFFFFFFFF" font="0" autofixW="true"/>
+	
+</Window>
+
+
