@@ -1,0 +1,22 @@
+pkgbase = fcitx-sogouimebs
+	pkgdesc = Sogou Pinyin for Linux
+	pkgver = 2.0.0.38
+	pkgrel = 1
+	url = https://pinyin.sogou.com/linux/
+	arch = x86_64
+	license = custom
+	depends = fcitx
+	depends = opencc
+	depends = libidn11
+	depends = lsb-release
+	depends = xorg-xprop
+	depends = qt5-webkit
+	depends = fcitx-qt5
+	conflicts = fcitx-sogoupinyin
+	source = sogou-autostart
+	source = sogouimebs-2.0.0.38.data.tar.xz
+	sha256sums = 0eba612291d5233b4ac2bcfcc26b6a81de6d9c60c1607119f0b45a9ce1096a78
+	sha256sums = 04aa2d1c6c956db0c953a46d6940050f95ee2c758ee52e1420645dd69a2d96bd
+
+pkgname = fcitx-sogouimebs
+
