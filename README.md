@@ -9,3 +9,4 @@
 
 下载链接：
 - [码云下载](https://gitee.com/laomocode/fcitx-sogouimebs/releases)
+- [Github下载](https://github.com/laomocode/fcitx-sogouimebs/releases)
