@@ -10,3 +10,6 @@
 下载链接：
 - [码云下载](https://gitee.com/laomocode/fcitx-sogouimebs/releases)
 - [Github下载](https://github.com/laomocode/fcitx-sogouimebs/releases)
+- [AUR下载](https://aur.archlinux.org/packages/fcitx-sogouimebs/)
+
+对于Debian系的用户，可以[点击这里](http://archive.ubuntukylin.com/ukui/pool/main/s/sogouimebs/sogouimebs_2.0.0.38+0428.1_amd64.deb)进行下载。
