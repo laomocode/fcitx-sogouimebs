@@ -4,8 +4,8 @@
 # Contributor: Felix Yan <felixonmars [AT] gmail.com>
 # Contributor: Mike Tong <3344907598 [AT] qq.com>
 pkgname=fcitx-sogouimebs
-pkgver=2.0.0.38
-pkgrel=2
+pkgver=2.0.0.38+0428.1
+pkgrel=1
 pkgdesc="Sogou Pinyin for Linux"
 arch=("x86_64")
 url="https://pinyin.sogou.com/linux/"
@@ -13,12 +13,12 @@ license=("custom")
 conflicts=('fcitx-sogoupinyin')
 depends=("fcitx" "opencc" "libidn11" "lsb-release" "xorg-xprop" "qt5-webkit" "fcitx-qt5")
 
-source=("sogouimebs-2.0.0.38.data.tar.xz")
-sha256sums=("04aa2d1c6c956db0c953a46d6940050f95ee2c758ee52e1420645dd69a2d96bd")
+source=("http://archive.ubuntukylin.com/ukui/pool/main/s/sogouimebs/sogouimebs_2.0.0.38+0428.1_amd64.deb")
+sha256sums=("80dbf56c876ec0c2e058f699bddc2e1b103e7671f8884e357b493c17799acc9d")
 
 package(){
     cd ${srcdir}
-    mv "$srcdir"/* "$pkgdir"
+    tar -xJvf data.tar.xz -C "${pkgdir}"
     mv "$pkgdir"/usr/lib/*-linux-gnu/fcitx "$pkgdir"/usr/lib/
     rmdir "$pkgdir"/usr/lib/*-linux-gnu
 
@@ -27,7 +27,6 @@ package(){
 
     #rm -r "$pkgdir"/usr/share/keyrings
     rm -r "$pkgdir"/etc/X11
-    rm "$pkgdir"/sogouimebs-2.0.0.38.data.tar.xz
     # install -m755 sogou-autostart "$pkgdir"/usr/bin
 
     # Do not modify $pkgdir/etc/xdg/autostart/fcitx-ui-sogou-qimpanel.desktop, as it is
