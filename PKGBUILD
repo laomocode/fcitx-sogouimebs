@@ -13,7 +13,7 @@ license=("custom")
 conflicts=('fcitx-sogoupinyin')
 depends=("fcitx" "opencc" "libidn11" "lsb-release" "xorg-xprop" "qt5-webkit" "fcitx-qt5")
 
-source=("http://archive.ubuntukylin.com/ukui/pool/main/s/sogouimebs/sogouimebs_2.0.0.38+0428.1_amd64.deb")
+source=("http://archive.ubuntukylin.com/ukui/pool/main/s/sogouimebs/sogouimebs_${pkgver}_amd64.deb")
 sha256sums=("80dbf56c876ec0c2e058f699bddc2e1b103e7671f8884e357b493c17799acc9d")
 
 package(){
